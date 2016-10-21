@@ -1,0 +1,57 @@
+<policy>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.proxy.AbstractControllerImpl$ServerPoolMemberTrackerPolicy</type>
+  <id>pPr4bSzz</id>
+  <displayName>Controller targets tracker</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <string>ServerPoolMemberTrackerPolicy:DynamicClusterImpl{id=rKx01txb}</string>
+  </tags>
+  <uniqueTag>ServerPoolMemberTrackerPolicy:DynamicClusterImpl{id=rKx01txb}</uniqueTag>
+  <config>
+    <sensorsToTrack>
+      <com.google.common.collect.RegularImmutableSet>
+        <attributeSensor>
+          <type>java.lang.String</type>
+          <name>host.subnet.hostname</name>
+          <description>Host name as known internally in the subnet where it is running (if different to host.name)</description>
+          <persistence>REQUIRED</persistence>
+        </attributeSensor>
+        <org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey>
+          <type>java.lang.Integer</type>
+          <name>http.port</name>
+          <description>HTTP port</description>
+          <persistence>REQUIRED</persistence>
+          <configKey class="configKey">
+            <name>http.port</name>
+            <type>org.apache.brooklyn.api.location.PortRange</type>
+            <description>HTTP port</description>
+            <defaultValue class="org.apache.brooklyn.core.location.PortRanges$AggregatePortRange">
+              <ranges class="ImmutableList">
+                <org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                  <port>8080</port>
+                </org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                <org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                  <start>18080</start>
+                  <end>65535</end>
+                  <delta>1</delta>
+                </org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+              </ranges>
+            </defaultValue>
+            <reconfigurable>false</reconfigurable>
+            <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+          </configKey>
+        </org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey>
+      </com.google.common.collect.RegularImmutableSet>
+    </sensorsToTrack>
+    <group>
+      <entityProxy>rKx01txb</entityProxy>
+    </group>
+    <uniqueTag>ServerPoolMemberTrackerPolicy:DynamicClusterImpl{id=rKx01txb}</uniqueTag>
+    <tags>
+      <set>
+        <string>ServerPoolMemberTrackerPolicy:DynamicClusterImpl{id=rKx01txb}</string>
+      </set>
+    </tags>
+  </config>
+</policy>

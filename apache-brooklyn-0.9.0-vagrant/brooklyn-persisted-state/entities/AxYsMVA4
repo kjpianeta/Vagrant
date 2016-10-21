@@ -1,0 +1,324 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.proxy.nginx.NginxControllerImpl</type>
+  <id>AxYsMVA4</id>
+  <displayName>Load Balancer (nginx)</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+      <kind>yaml_spec</kind>
+      <contents>services: [{ type: org.apache.brooklyn.entity.proxy.nginx.NginxController }]</contents>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+  </tags>
+  <parent>Ha4plERs</parent>
+  <config>
+    <camp.template.id>oVpoUoZj</camp.template.id>
+    <nginx.sticky type="boolean">false</nginx.sticky>
+    <loadbalancer.serverpool>
+      <org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent>
+        <componentId>cluster</componentId>
+        <scope>GLOBAL</scope>
+      </org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent>
+    </loadbalancer.serverpool>
+    <onbox.base.dir>/home/vagrant/brooklyn-managed-processes</onbox.base.dir>
+    <onbox.base.dir.resolved type="boolean">true</onbox.base.dir.resolved>
+    <install.unique__label>NginxController_1.8.0</install.unique__label>
+  </config>
+  <locations>
+    <string>q9MAZnxU</string>
+  </locations>
+  <attributes>
+    <service.notUp.indicators>
+      <map>
+        <service.process.isRunning>The software process for this entity does not appear to be running</service.process.isRunning>
+        <nginx.url.answers.nicely>URL where nginx listens is not answering correctly (with expected header)</nginx.url.answers.nicely>
+      </map>
+    </service.notUp.indicators>
+    <proxy.serverpool.targets>
+      <MutableMap/>
+    </proxy.serverpool.targets>
+    <service.isUp type="boolean">false</service.isUp>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468888696870</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+    <softwareservice.provisioningLocation>
+      <locationProxy>H1Lk1eAO</locationProxy>
+    </softwareservice.provisioningLocation>
+    <host.subnet.hostname>10.10.10.101</host.subnet.hostname>
+    <host.subnet.address>10.10.10.101</host.subnet.address>
+    <host.name>10.10.10.101</host.name>
+    <host.address>10.10.10.101</host.address>
+    <host.sshAddress>
+      <org.apache.brooklyn.util.net.UserAndHostAndPort>
+        <user>vagrant</user>
+        <hostAndPort>
+          <host>10.10.10.101</host>
+          <port>22</port>
+          <hasBracketlessColons>false</hasBracketlessColons>
+        </hostAndPort>
+      </org.apache.brooklyn.util.net.UserAndHostAndPort>
+    </host.sshAddress>
+    <install.dir>/home/vagrant/brooklyn-managed-processes/installs/NginxController_1.8.0</install.dir>
+    <run.dir>/home/vagrant/brooklyn-managed-processes/apps/Ha4plERs/entities/NginxController_AxYsMVA4</run.dir>
+    <log.location>/home/vagrant/brooklyn-managed-processes/apps/Ha4plERs/entities/NginxController_AxYsMVA4/console</log.location>
+    <nginx.log.access>/home/vagrant/brooklyn-managed-processes/apps/Ha4plERs/entities/NginxController_AxYsMVA4/logs/access.log</nginx.log.access>
+    <nginx.log.error>/home/vagrant/brooklyn-managed-processes/apps/Ha4plERs/entities/NginxController_AxYsMVA4/logs/error.log</nginx.log.error>
+    <download.url>http://nginx.org/download/nginx-${version}.tar.gz</download.url>
+    <member.sensor.portNumber>
+      <org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey>
+        <type>java.lang.Integer</type>
+        <name>http.port</name>
+        <description>HTTP port</description>
+        <persistence>REQUIRED</persistence>
+        <configKey class="configKey">
+          <name>http.port</name>
+          <type>org.apache.brooklyn.api.location.PortRange</type>
+          <description>HTTP port</description>
+          <defaultValue class="org.apache.brooklyn.core.location.PortRanges$AggregatePortRange">
+            <ranges class="ImmutableList">
+              <org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                <port>8080</port>
+              </org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+              <org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                <start>18080</start>
+                <end>65535</end>
+                <delta>1</delta>
+              </org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+            </ranges>
+          </defaultValue>
+          <reconfigurable>false</reconfigurable>
+          <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+        </configKey>
+      </org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey>
+    </member.sensor.portNumber>
+    <proxy.http.port type="int">8000</proxy.http.port>
+    <proxy.https.port type="int">8443</proxy.https.port>
+    <member.sensor.hostname>
+      <attributeSensor>
+        <type>java.lang.String</type>
+        <name>host.subnet.hostname</name>
+        <description>Host name as known internally in the subnet where it is running (if different to host.name)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </member.sensor.hostname>
+    <download.addon.urls>
+      <com.google.common.collect.RegularImmutableMap>
+        <entry>
+          <string>stickymodule</string>
+          <string>https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/${addonversion}.tar.gz</string>
+        </entry>
+        <entry>
+          <string>pcre</string>
+          <string>ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${addonversion}.tar.gz</string>
+        </entry>
+      </com.google.common.collect.RegularImmutableMap>
+    </download.addon.urls>
+    <proxy.protocol>http</proxy.protocol>
+    <main.uri>
+      <uri>http://10.10.10.101:8000/</uri>
+    </main.uri>
+    <webapp.url>http://10.10.10.101:8000/</webapp.url>
+    <expandedinstall.dir>/home/vagrant/brooklyn-managed-processes/installs/NginxController_1.8.0/nginx-1.8.0</expandedinstall.dir>
+    <nginx.url.answers.nicely type="boolean">false</nginx.url.answers.nicely>
+    <service.process.isRunning type="boolean">false</service.process.isRunning>
+    <service.notUp.diagnostics>
+      <MutableMap>
+        <service.process.isRunning>The software process for this entity does not appear to be running</service.process.isRunning>
+      </MutableMap>
+    </service.notUp.diagnostics>
+    <nginx.pid.file>/home/vagrant/brooklyn-managed-processes/apps/Ha4plERs/entities/NginxController_AxYsMVA4/pid.txt</nginx.pid.file>
+    <http.port type="int">8000</http.port>
+    <service.problems>
+      <MutableMap/>
+    </service.problems>
+  </attributes>
+  <policies>
+    <string>pPr4bSzz</string>
+  </policies>
+  <enrichers>
+    <string>dVesMQQX</string>
+    <string>xopNV8Dr</string>
+    <string>wyK0sYdq</string>
+    <string>VMU5LghI</string>
+    <string>P1BDT5Co</string>
+  </enrichers>
+  <feeds>
+    <string>GVbF2htu</string>
+  </feeds>
+  <configKeys>
+    <camp.template.id>
+      <configKey>
+        <name>camp.template.id</name>
+        <type>java.lang.String</type>
+        <description>UID of the component in the CAMP template from which this entity was created</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.template.id>
+    <onbox.base.dir>
+      <configKey>
+        <name>onbox.base.dir</name>
+        <type>java.lang.String</type>
+        <description>Default base directory on target machines where Brooklyn config data is stored; default depends on the location, either ~/brooklyn-managed-processes or /tmp/brooklyn-${username} on localhost</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir>
+    <onbox.base.dir.resolved>
+      <configKey>
+        <name>onbox.base.dir.resolved</name>
+        <type>java.lang.Boolean</type>
+        <description>Whether the on-box base directory has been resolved (for internal use)</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir.resolved>
+  </configKeys>
+  <attributeKeys>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+    <host.sshAddress>
+      <attributeSensor>
+        <type>org.apache.brooklyn.util.net.UserAndHostAndPort</type>
+        <name>host.sshAddress</name>
+        <description>user@host:port for ssh&apos;ing (or null if inappropriate)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </host.sshAddress>
+    <log.location>
+      <attributeSensor>
+        <type>java.lang.String</type>
+        <name>log.location</name>
+        <description>Log file location</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </log.location>
+    <service.notUp.diagnostics>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.diagnostics</name>
+        <description>A map of namespaced diagnostics, from when the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.diagnostics>
+    <http.port>
+      <org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey reference="../../../attributes/member.sensor.portNumber/org.apache.brooklyn.core.sensor.PortAttributeSensorAndConfigKey"/>
+    </http.port>
+    <service.problems>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.problems</name>
+        <description>A map of namespaced indicators of problems with a service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.problems>
+  </attributeKeys>
+  <effectors>
+    <effector>
+      <name>restart</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>restartChildren</name>
+          <type>java.lang.Boolean</type>
+          <description>Whether to restart children; default false</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="boolean">false</defaultValue>
+        </parameter>
+        <parameter>
+          <name>restartMachine</name>
+          <type>java.lang.Object</type>
+          <description>Whether to restart/replace the machine provisioned for this entity:  &apos;true&apos;, &apos;false&apos;, or &apos;auto&apos; are supported, with the default being &apos;auto&apos; which means to restart or reprovision the machine if there is no simpler way known to restart the entity (for example, if the machine is unhealthy, it would not be possible to restart the process, not even via a stop-then-start sequence); if the machine was not provisioned for this entity, this parameter has no effect</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="string">auto</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Restart the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$RestartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks">
+            <machineInitTasks/>
+          </outer-class>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>start</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>locations</name>
+          <type>java.lang.Object</type>
+          <description>The location or locations to start in, as a string, a location object, a list of strings, or a list of location objects</description>
+        </parameter>
+      </parameters>
+      <description>Start the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>stop</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>stopProcessMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the process with regard to the entity state. ALWAYS will try to stop the process even if the entity is marked as stopped, IF_NOT_STOPPED stops the process only if the entity is not marked as stopped, NEVER doesn&apos;t stop the process.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+        <parameter>
+          <name>stopMachineMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the machine with regard to the entity state. ALWAYS will try to stop the machine even if the entity is marked as stopped, IF_NOT_STOPPED stops the machine only if the entity is not marked as stopped, NEVER doesn&apos;t stop the machine.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Stop the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StopEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+  </effectors>
+</entity>

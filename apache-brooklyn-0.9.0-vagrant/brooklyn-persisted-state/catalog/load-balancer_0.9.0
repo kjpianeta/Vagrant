@@ -1,0 +1,23 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>load-balancer:0.9.0</id>
+  <displayName>Load Balancer (nginx)</displayName>
+  <catalogItemId>load-balancer:0.9.0</catalogItemId>
+  <description>Create a load balancer which will point at members in the group entity
+referred to by the config key &quot;serverPool&quot;. 
+The sensor advertising the port can be configured with the &quot;member.sensor.portNumber&quot; config key,
+defaulting to `http.port`; all member entities which have published &quot;service.up&quot; will then be picked up.
+</description>
+  <registeredTypeName>load-balancer</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>services:
+- type: org.apache.brooklyn.entity.proxy.nginx.NginxController
+  name: Load Balancer (nginx)</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

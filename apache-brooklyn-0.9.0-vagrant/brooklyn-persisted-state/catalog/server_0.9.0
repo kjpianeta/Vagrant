@@ -1,0 +1,21 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>server:0.9.0</id>
+  <displayName>Server</displayName>
+  <catalogItemId>server:0.9.0</catalogItemId>
+  <description>Provision a server, with customizable provisioning.properties and credentials installed, 
+but no other special software process or scripts executed.
+</description>
+  <registeredTypeName>server</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>services:
+- type: org.apache.brooklyn.entity.software.base.EmptySoftwareProcess
+  name: Server</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

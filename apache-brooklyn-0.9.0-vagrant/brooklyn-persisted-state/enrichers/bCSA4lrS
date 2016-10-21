@@ -1,0 +1,41 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.enricher.stock.Aggregator</type>
+  <id>bCSA4lrS</id>
+  <displayName>org.apache.brooklyn.enricher.stock.Aggregator</displayName>
+  <tags>
+    <string>aggregator:mongodb.root.username</string>
+  </tags>
+  <uniqueTag>aggregator:mongodb.root.username</uniqueTag>
+  <config>
+    <enricher.sourceSensor>
+      <org.apache.brooklyn.core.sensor.BasicAttributeSensorAndConfigKey>
+        <type>java.lang.String</type>
+        <name>mongodb.root.username</name>
+        <description>Username of the initial admin user</description>
+        <persistence>REQUIRED</persistence>
+        <configKey class="configKey">
+          <name>mongodb.root.username</name>
+          <type>java.lang.String</type>
+          <description>Username of the initial admin user</description>
+          <defaultValue class="string">superuser</defaultValue>
+          <reconfigurable>false</reconfigurable>
+          <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+        </configKey>
+      </org.apache.brooklyn.core.sensor.BasicAttributeSensorAndConfigKey>
+    </enricher.sourceSensor>
+    <enricher.transformation>
+      <org.apache.brooklyn.entity.nosql.mongodb.MongoDBReplicaSetImpl_-RootUsernameReducer/>
+    </enricher.transformation>
+    <enricher.targetSensor>
+      <org.apache.brooklyn.core.sensor.BasicAttributeSensorAndConfigKey reference="../../enricher.sourceSensor/org.apache.brooklyn.core.sensor.BasicAttributeSensorAndConfigKey"/>
+    </enricher.targetSensor>
+    <enricher.aggregating.fromMembers type="boolean">true</enricher.aggregating.fromMembers>
+    <uniqueTag>aggregator:mongodb.root.username</uniqueTag>
+    <tags>
+      <set>
+        <string>aggregator:mongodb.root.username</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

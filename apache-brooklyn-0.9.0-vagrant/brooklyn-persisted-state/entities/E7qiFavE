@@ -1,0 +1,130 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.stock.BasicApplicationImpl</type>
+  <id>E7qiFavE</id>
+  <displayName>Tomcat</displayName>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+      <kind>yaml_spec</kind>
+      <contents>name: Tomcat
+services:
+- type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
+  name: tomcatServer
+location:
+  byon:
+    user: vagrant
+    password: vagrant
+    hosts:
+      - 10.10.10.101
+      - 10.10.10.102
+      - 10.10.10.103
+      - 10.10.10.104</contents>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+  </tags>
+  <children>
+    <string>HvBvyqA3</string>
+  </children>
+  <config>
+    <camp.template.id>ygFAw9jl</camp.template.id>
+    <brooklyn.wrapper__app type="boolean">true</brooklyn.wrapper__app>
+  </config>
+  <locations>
+    <string>oAD07Zbs</string>
+  </locations>
+  <attributes>
+    <service.notUp.indicators>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">TomcatServerImpl{id=HvBvyqA3} is not up</entry>
+      </MutableMap>
+    </service.notUp.indicators>
+    <service.problems>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">Required entity not healthy: TomcatServerImpl{id=HvBvyqA3}</entry>
+      </MutableMap>
+    </service.problems>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468890126136</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+    <service.isUp type="boolean">false</service.isUp>
+  </attributes>
+  <enrichers>
+    <string>QjJbCN6Q</string>
+    <string>qyjOr0EV</string>
+    <string>FpIcQlDd</string>
+  </enrichers>
+  <configKeys>
+    <camp.template.id>
+      <configKey>
+        <name>camp.template.id</name>
+        <type>java.lang.String</type>
+        <description>UID of the component in the CAMP template from which this entity was created</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.template.id>
+    <brooklyn.wrapper__app>
+      <configKey>
+        <name>brooklyn.wrapper_app</name>
+        <type>java.lang.Boolean</type>
+        <description>brooklyn.wrapper_app</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </brooklyn.wrapper__app>
+  </configKeys>
+  <attributeKeys>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+    <service.problems>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.problems</name>
+        <description>A map of namespaced indicators of problems with a service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.problems>
+    <service.state.expected>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle$Transition</type>
+        <name>service.state.expected</name>
+        <description>Last controlled change to service state, indicating what the expected state should be</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state.expected>
+    <service.state>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle</type>
+        <name>service.state</name>
+        <description>Actual lifecycle state of the service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state>
+  </attributeKeys>
+</entity>

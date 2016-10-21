@@ -1,0 +1,32 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.messaging.rabbit.RabbitBroker:0.9.0</id>
+  <displayName>RabbitMQ Broker</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.messaging.rabbit.RabbitBroker:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.software.base.SoftwareProcess</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.entity.messaging.MessageBroker</string>
+        <string>org.apache.brooklyn.entity.messaging.amqp.AmqpServer</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>RabbitMQ is an open source message broker software (i.e. message-oriented middleware) that implements the Advanced Message Queuing Protocol (AMQP) standard</description>
+  <registeredTypeName>org.apache.brooklyn.entity.messaging.rabbit.RabbitBroker</registeredTypeName>
+  <iconUrl>classpath:///RabbitMQLogo.png</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.messaging.rabbit.RabbitBroker }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

@@ -1,0 +1,56 @@
+<feed>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.feed.http.HttpFeed</type>
+  <id>GVbF2htu</id>
+  <displayName>org.apache.brooklyn.feed.http.HttpFeed</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <string>nginx-poll</string>
+  </tags>
+  <uniqueTag>nginx-poll</uniqueTag>
+  <config>
+    <feed.onlyIfServiceUp type="boolean">false</feed.onlyIfServiceUp>
+    <polls>
+      <com.google.common.collect.HashMultimap serialization="custom">
+        <unserializable-parents/>
+        <com.google.common.collect.HashMultimap>
+          <default/>
+          <int>2</int>
+          <int>1</int>
+          <org.apache.brooklyn.feed.http.HttpFeed_-HttpPollIdentifier>
+            <method>get</method>
+            <uriProvider class="org.apache.brooklyn.entity.proxy.nginx.NginxControllerImpl$UrlInferencer">
+              <outer-class>AxYsMVA4</outer-class>
+            </uriProvider>
+            <headers class="MutableMap"/>
+            <credentials class="com.google.common.base.Absent"/>
+          </org.apache.brooklyn.feed.http.HttpFeed_-HttpPollIdentifier>
+          <int>1</int>
+          <org.apache.brooklyn.feed.http.HttpPollConfig>
+            <sensor class="attributeSensor">
+              <type>java.lang.Boolean</type>
+              <name>nginx.url.answers.nicely</name>
+              <description>nginx.url.answers.nicely</description>
+              <persistence>REQUIRED</persistence>
+            </sensor>
+            <onsuccess class="org.apache.brooklyn.feed.http.HttpValueFunctions$ContainsHeader">
+              <header>Server</header>
+            </onsuccess>
+            <onfailure class="org.apache.brooklyn.feed.http.HttpValueFunctions$ContainsHeader" reference="../onsuccess"/>
+            <onexception class="com.google.common.base.Functions$ConstantFunction">
+              <value class="boolean">false</value>
+            </onexception>
+            <checkSuccess class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</checkSuccess>
+            <suppressDuplicates>true</suppressDuplicates>
+            <enabled>true</enabled>
+            <period>1000</period>
+            <method>GET</method>
+            <suburl></suburl>
+            <vars class="com.google.common.collect.EmptyImmutableBiMap"/>
+            <headers class="com.google.common.collect.EmptyImmutableBiMap" reference="../vars"/>
+          </org.apache.brooklyn.feed.http.HttpPollConfig>
+        </com.google.common.collect.HashMultimap>
+      </com.google.common.collect.HashMultimap>
+    </polls>
+  </config>
+</feed>

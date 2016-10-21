@@ -1,0 +1,69 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.enricher.stock.Transformer</type>
+  <id>QuuxLKvP</id>
+  <displayName>org.apache.brooklyn.enricher.stock.Transformer</displayName>
+  <tags>
+    <string>service.isUp if no service.notUp.indicators</string>
+  </tags>
+  <uniqueTag>service.isUp if no service.notUp.indicators</uniqueTag>
+  <config>
+    <enricher.transformation>
+      <org.apache.brooklyn.util.guava.IfFunctions_-IfFunctionBuilder>
+        <tests>
+          <entry>
+            <com.google.common.base.Predicates_-NotPredicate>
+              <predicate class="com.google.common.base.Predicates$ObjectPredicate">IS_NULL</predicate>
+            </com.google.common.base.Predicates_-NotPredicate>
+            <com.google.common.base.Functions_-PredicateFunction>
+              <predicate class="com.google.common.base.Predicates$CompositionPredicate">
+                <p class="com.google.common.base.Predicates$IsEqualToPredicate">
+                  <target class="int">0</target>
+                </p>
+                <f class="com.google.common.base.Functions$FunctionComposition">
+                  <g class="org.apache.brooklyn.util.collections.CollectionFunctionals$SizeFunction"/>
+                  <f class="org.apache.brooklyn.util.collections.CollectionFunctionals$KeysOfMapFunction"/>
+                </f>
+              </predicate>
+            </com.google.common.base.Functions_-PredicateFunction>
+          </entry>
+        </tests>
+        <defaultFunction class="org.apache.brooklyn.util.guava.Functionals$ConstantFunction">
+          <constant/>
+          <toStringDescription reference="../constant"/>
+        </defaultFunction>
+      </org.apache.brooklyn.util.guava.IfFunctions_-IfFunctionBuilder>
+    </enricher.transformation>
+    <enricher.sourceSensor>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </enricher.sourceSensor>
+    <enricher.targetSensor>
+      <attributeSensor>
+        <type>java.lang.Boolean</type>
+        <name>service.isUp</name>
+        <description>Whether the service is active and availability (confirmed and monitored)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </enricher.targetSensor>
+    <enricher.suppressDuplicates type="boolean">true</enricher.suppressDuplicates>
+    <uniqueTag>service.isUp if no service.notUp.indicators</uniqueTag>
+    <tags>
+      <set>
+        <string>service.isUp if no service.notUp.indicators</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

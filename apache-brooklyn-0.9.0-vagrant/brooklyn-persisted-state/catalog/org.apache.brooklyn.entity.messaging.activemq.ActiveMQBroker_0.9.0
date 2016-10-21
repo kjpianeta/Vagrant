@@ -1,0 +1,34 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.messaging.activemq.ActiveMQBroker:0.9.0</id>
+  <displayName>ActiveMQ Broker</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.messaging.activemq.ActiveMQBroker:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.software.base.SoftwareProcess</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.entity.messaging.MessageBroker</string>
+        <string>org.apache.brooklyn.entity.java.UsesJmx</string>
+        <string>org.apache.brooklyn.entity.java.UsesJava</string>
+        <string>org.apache.brooklyn.entity.messaging.jms.JMSBroker</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>ActiveMQ is an open source message broker which fully implements the Java Message Service 1.1 (JMS)</description>
+  <registeredTypeName>org.apache.brooklyn.entity.messaging.activemq.ActiveMQBroker</registeredTypeName>
+  <iconUrl>classpath:///activemq-logo.png</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.messaging.activemq.ActiveMQBroker }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

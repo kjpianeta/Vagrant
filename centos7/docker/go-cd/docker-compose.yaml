@@ -1,0 +1,25 @@
+server:
+  image: gocd/gocd-server
+  hostname: go-server # Needed so the go-agent can find the server
+  ports:
+    - '8153:8153'
+    - '8154:8154'
+  # environment:
+    # - GO_UID:
+    # - GO_GID:
+    # - GO_PIPELINE_COUNTER:
+    # - GO_PIPELINE_NAME:
+    # - GO_STAGE_NAME:
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  restart: always
+agent:
+  image: gocd/gocd-agent
+  links:
+    - server
+  # environment:
+    # - GO_UID:
+    # - GO_GID:
+    # - GO_PIPELINE_COUNTER:
+    # - GO_PIPELINE_NAME:
+    # - GO_STAGE_NAME:

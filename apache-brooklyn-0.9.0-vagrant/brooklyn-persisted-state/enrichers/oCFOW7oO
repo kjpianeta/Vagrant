@@ -1,0 +1,40 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.enricher.TimeWeightedDeltaEnricher</type>
+  <id>oCFOW7oO</id>
+  <displayName>org.apache.brooklyn.policy.enricher.TimeWeightedDeltaEnricher</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>TimeWeightedDeltaEnricher:webapp.reqs.total/1s-&gt;webapp.reqs.perSec.last</string>
+  </tags>
+  <uniqueTag>TimeWeightedDeltaEnricher:webapp.reqs.total/1s-&gt;webapp.reqs.perSec.last</uniqueTag>
+  <config>
+    <unitMillis type="int">1000</unitMillis>
+    <postProcessor type="com.google.common.base.Functions$IdentityFunction">INSTANCE</postProcessor>
+    <producer>
+      <entityProxy>venlfOlj</entityProxy>
+    </producer>
+    <source>
+      <attributeSensor>
+        <type>java.lang.Integer</type>
+        <name>webapp.reqs.total</name>
+        <description>Request count</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </source>
+    <target>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.perSec.last</name>
+        <description>Reqs/sec (last datapoint)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </target>
+    <uniqueTag>TimeWeightedDeltaEnricher:webapp.reqs.total/1s-&gt;webapp.reqs.perSec.last</uniqueTag>
+    <tags>
+      <set>
+        <string>TimeWeightedDeltaEnricher:webapp.reqs.total/1s-&gt;webapp.reqs.perSec.last</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

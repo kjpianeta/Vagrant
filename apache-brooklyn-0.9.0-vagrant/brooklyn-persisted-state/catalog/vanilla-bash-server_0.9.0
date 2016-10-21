@@ -1,0 +1,23 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>vanilla-bash-server:0.9.0</id>
+  <displayName>Server with Launch Script (bash)</displayName>
+  <catalogItemId>vanilla-bash-server:0.9.0</catalogItemId>
+  <description>Provision a server, with customizable provisioning.properties and credentials installed, 
+but no other special software process or scripts executed.
+The script should be supplied in &quot;launch.command&quot; as per docs on
+org.apache.brooklyn.entity.software.base.VanillaSoftwareProcess.
+</description>
+  <registeredTypeName>vanilla-bash-server</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>services:
+- type: org.apache.brooklyn.entity.software.base.VanillaSoftwareProcess
+  name: Server with Launch Script (bash)</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

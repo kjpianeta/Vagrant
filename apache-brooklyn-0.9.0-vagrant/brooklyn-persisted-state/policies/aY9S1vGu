@@ -1,0 +1,24 @@
+<policy>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.ha.ServiceRestarter</type>
+  <id>aY9S1vGu</id>
+  <displayName>Service Restarter</displayName>
+  <catalogItemId>org.apache.brooklyn.policy.ha.ServiceRestarter:0.9.0</catalogItemId>
+  <tags>
+    <string>ServiceRestarter:ha.entityFailed</string>
+  </tags>
+  <uniqueTag>ServiceRestarter:ha.entityFailed</uniqueTag>
+  <config>
+    <failOnRecurringFailuresInThisDuration>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>300000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </failOnRecurringFailuresInThisDuration>
+    <uniqueTag>ServiceRestarter:ha.entityFailed</uniqueTag>
+    <tags>
+      <set>
+        <string>ServiceRestarter:ha.entityFailed</string>
+      </set>
+    </tags>
+  </config>
+</policy>

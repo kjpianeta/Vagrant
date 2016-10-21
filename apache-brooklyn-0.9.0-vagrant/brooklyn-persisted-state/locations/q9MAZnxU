@@ -1,0 +1,38 @@
+<location>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.location.ssh.SshMachineLocation</type>
+  <id>q9MAZnxU</id>
+  <displayName>SshMachineLocation:q9MA</displayName>
+  <parent>H1Lk1eAO</parent>
+  <locationConfig>
+    <address>
+      <java.net.Inet4Address>10.10.10.101/10.10.10.101</java.net.Inet4Address>
+    </address>
+    <user>vagrant</user>
+    <brooklyn.internal.location.createUnmanaged type="boolean">false</brooklyn.internal.location.createUnmanaged>
+    <inboundPorts>
+      <MutableSet>
+        <int>22</int>
+        <int>8000</int>
+        <int>8443</int>
+      </MutableSet>
+    </inboundPorts>
+    <callerContext>
+      <entityProxy>AxYsMVA4</entityProxy>
+    </callerContext>
+    <usedPorts>
+      <set>
+        <int>8000</int>
+        <int>8443</int>
+      </set>
+    </usedPorts>
+    <tags>
+      <set/>
+    </tags>
+  </locationConfig>
+  <locationConfigUnused>
+    <string>brooklyn.internal.location.createUnmanaged</string>
+    <string>inboundPorts</string>
+    <string>callerContext</string>
+  </locationConfigUnused>
+</location>

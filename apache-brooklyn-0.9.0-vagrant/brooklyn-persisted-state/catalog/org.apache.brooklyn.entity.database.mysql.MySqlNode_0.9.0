@@ -1,0 +1,35 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.database.mysql.MySqlNode:0.9.0</id>
+  <displayName>MySql Node</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.database.mysql.MySqlNode:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.software.base.SoftwareProcess</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.api.objs.HasShortName</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$DatastoreCommon</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$HasDatastoreUrl</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$CanExecuteScript</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$CanGiveCreationScript</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>MySql is an open source relational database management system (RDBMS)</description>
+  <registeredTypeName>org.apache.brooklyn.entity.database.mysql.MySqlNode</registeredTypeName>
+  <iconUrl>classpath:///mysql-logo-110x57.png</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.database.mysql.MySqlNode }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

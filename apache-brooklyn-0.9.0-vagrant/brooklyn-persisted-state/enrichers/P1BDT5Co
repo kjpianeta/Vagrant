@@ -1,0 +1,58 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.enricher.stock.UpdatingMap</type>
+  <id>P1BDT5Co</id>
+  <displayName>org.apache.brooklyn.enricher.stock.UpdatingMap</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <string>not-up-unless-url-answers</string>
+  </tags>
+  <uniqueTag>not-up-unless-url-answers</uniqueTag>
+  <config>
+    <enricher.sourceSensor>
+      <attributeSensor>
+        <type>java.lang.Boolean</type>
+        <name>nginx.url.answers.nicely</name>
+        <description>nginx.url.answers.nicely</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </enricher.sourceSensor>
+    <enricher.targetSensor>
+      <attributeSensor>
+        <typeToken class="org.apache.brooklyn.core.entity.Attributes$1" resolves-to="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </enricher.targetSensor>
+    <enricher.updatingMap.computing>
+      <org.apache.brooklyn.util.guava.IfFunctions_-IfFunctionBuilder>
+        <tests>
+          <entry>
+            <com.google.common.base.Predicates_-NotPredicate>
+              <predicate class="com.google.common.base.Predicates$IsEqualToPredicate">
+                <target class="boolean">true</target>
+              </predicate>
+            </com.google.common.base.Predicates_-NotPredicate>
+            <org.apache.brooklyn.util.guava.Functionals_-ConstantFunction>
+              <constant class="string">URL where nginx listens is not answering correctly (with expected header)</constant>
+              <toStringDescription class="string">URL where nginx listens is not answering correctly (with expected header)</toStringDescription>
+            </org.apache.brooklyn.util.guava.Functionals_-ConstantFunction>
+          </entry>
+        </tests>
+      </org.apache.brooklyn.util.guava.IfFunctions_-IfFunctionBuilder>
+    </enricher.updatingMap.computing>
+    <uniqueTag>not-up-unless-url-answers</uniqueTag>
+    <tags>
+      <set/>
+    </tags>
+  </config>
+</enricher>

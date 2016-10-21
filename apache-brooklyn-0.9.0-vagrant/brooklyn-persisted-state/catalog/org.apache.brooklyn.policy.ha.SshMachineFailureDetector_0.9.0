@@ -1,0 +1,17 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogPolicyItemDto</type>
+  <id>org.apache.brooklyn.policy.ha.SshMachineFailureDetector:0.9.0</id>
+  <displayName>Ssh Connectivity Failure Detector</displayName>
+  <catalogItemId>org.apache.brooklyn.policy.ha.SshMachineFailureDetector:0.9.0</catalogItemId>
+  <description>HA policy for monitoring an SshMachine, emitting an event if the connection is lost/restored</description>
+  <registeredTypeName>org.apache.brooklyn.policy.ha.SshMachineFailureDetector</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>brooklyn.policies: [{ type: org.apache.brooklyn.policy.ha.SshMachineFailureDetector }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>POLICY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.policy.Policy</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.policy.PolicySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

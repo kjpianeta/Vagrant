@@ -1,0 +1,43 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.enricher.RollingTimeWindowMeanEnricher</type>
+  <id>uE7CyD3H</id>
+  <displayName>org.apache.brooklyn.policy.enricher.RollingTimeWindowMeanEnricher</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>RollingTimeWindowMeanEnricher:webapp.reqs.perSec.last/10s-&gt;webapp.reqs.perSec.windowed</string>
+  </tags>
+  <uniqueTag>RollingTimeWindowMeanEnricher:webapp.reqs.perSec.last/10s-&gt;webapp.reqs.perSec.windowed</uniqueTag>
+  <config>
+    <timePeriod>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>10000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </timePeriod>
+    <producer>
+      <entityProxy>venlfOlj</entityProxy>
+    </producer>
+    <source>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.perSec.last</name>
+        <description>Reqs/sec (last datapoint)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </source>
+    <target>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.perSec.windowed</name>
+        <description>Reqs/sec (over time window)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </target>
+    <uniqueTag>RollingTimeWindowMeanEnricher:webapp.reqs.perSec.last/10s-&gt;webapp.reqs.perSec.windowed</uniqueTag>
+    <tags>
+      <set>
+        <string>RollingTimeWindowMeanEnricher:webapp.reqs.perSec.last/10s-&gt;webapp.reqs.perSec.windowed</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

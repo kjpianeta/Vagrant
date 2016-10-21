@@ -1,0 +1,85 @@
+#**********************************************************
+#
+# Author: Keneth Pianeta <kpianeta@cisco.com>
+#
+# Default Config
+#   check_newer_vagrant_box
+#     enable/disable the vagrant check for an updated box
+#   run_os_update
+#     enable/disable running a yum/apt-get update on box start
+#
+# GOCD Server Config
+#   shell:env:AGENT_KEY
+#     specifies the key hash used by gocd agents when auto-registering with server
+#
+#**********************************************************
+---
+default_config:
+    check_newer_vagrant_box: true
+    run_os_update: true
+    install_vbox_guest_additions: true
+servers:
+  - name: swarm-manager
+    box: centos/7
+    is_primary: true    
+    ram: 4096
+    cpus: 4
+    install_vbox_guest_additions:
+      env:
+        DOWNLOAD_CENTOS_GPG_KEY_URL: http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+        DOWNLOAD_VBOX_GUEST_ADDITIONS_ISO_URL: http://download.virtualbox.org/virtualbox/5.0.26/VBoxGuestAdditions_5.0.26.iso
+        VBOX_GUEST_ADDITIONS_ISO: VBoxGuestAdditions_5.0.26.iso
+      cmd: |
+        echo "*************************Start Installation Virtualbox Guest Additions*************************"
+        sudo rpm --import ${DOWNLOAD_CENTOS_GPG_KEY_URL} && \
+        sudo yum -y install kernel-devel gcc make perl && \
+        sudo yum -y clean all && \
+        cd /tmp && curl -O ${DOWNLOAD_VBOX_GUEST_ADDITIONS_ISO_URL} && \
+        sudo mkdir -p /media/VBoxGuestAdditions && \
+        sudo mount -o loop,ro ${VBOX_GUEST_ADDITIONS_ISO} /media/VBoxGuestAdditions && \
+        sudo sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run && \
+        sudo rm ${VBOX_GUEST_ADDITIONS_ISO} && \
+        sudo umount /media/VBoxGuestAdditions && \
+        sudo rmdir /media/VBoxGuestAdditions && \
+        sudo lsmod | grep vboxsf && \
+        echo "*************************End Installation Virtualbox Guest Additions*************************"
+
+    shared_folders:
+     - guest: /srv
+       host: ./salt/roots
+       owner: root
+       group: root
+    forwarded_ports:
+     - guest: 8153
+       host: 8153
+     - guest: 8154
+       host: 8154
+    shell:
+      env:
+        AGENT_KEY: 5d47a77d32202c58837f269a0d1c60c7
+      cmd:
+        - echo "*************************Start Shell commands*************************"
+        - uname -a && df -h && ls -la /srv/salt/*
+        - echo "*************************End Shell commands*************************"
+
+  - name: byon1
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.101
+  - name: byon2
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.102
+  - name: byon3
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.103
+  - name: byon4
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.104
+...

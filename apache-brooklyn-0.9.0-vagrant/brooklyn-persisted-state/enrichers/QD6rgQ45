@@ -1,0 +1,30 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic$ComputeServiceIndicatorsFromChildrenAndMembers</type>
+  <id>QD6rgQ45</id>
+  <displayName>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic.ComputeServiceIndicatorsFromChildrenAndMembers</displayName>
+  <tags>
+    <string>service-lifecycle-indicators-from-children-and-members</string>
+  </tags>
+  <uniqueTag>service-lifecycle-indicators-from-children-and-members</uniqueTag>
+  <config>
+    <enricher.service__state.children__and__members.quorum.running>
+      <org.apache.brooklyn.util.collections.QuorumCheck_-NumericQuorumCheck>
+        <minRequiredSize>0</minRequiredSize>
+        <minRequiredRatio>1.0</minRequiredRatio>
+        <allowEmpty>false</allowEmpty>
+        <name>all</name>
+      </org.apache.brooklyn.util.collections.QuorumCheck_-NumericQuorumCheck>
+    </enricher.service__state.children__and__members.quorum.running>
+    <enricher.service__state.children__and__members.service__up.publish type="boolean">false</enricher.service__state.children__and__members.service__up.publish>
+    <enricher.aggregating.fromMembers type="boolean">true</enricher.aggregating.fromMembers>
+    <enricher.aggregating.fromChildren type="boolean">true</enricher.aggregating.fromChildren>
+    <enricher.suppressDuplicates type="boolean">true</enricher.suppressDuplicates>
+    <uniqueTag>service-lifecycle-indicators-from-children-and-members</uniqueTag>
+    <tags>
+      <set>
+        <string>service-lifecycle-indicators-from-children-and-members</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

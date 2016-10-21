@@ -1,0 +1,33 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</id>
+  <displayName>Nginx Server</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.proxy.AbstractController</string>
+        <string>org.apache.brooklyn.entity.software.base.SoftwareProcess</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.entity.proxy.LoadBalancer</string>
+        <string>org.apache.brooklyn.api.objs.HasShortName</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>A single Nginx server. Provides HTTP and reverse proxy services</description>
+  <registeredTypeName>org.apache.brooklyn.entity.proxy.nginx.NginxController</registeredTypeName>
+  <iconUrl>classpath:///nginx-logo.jpeg</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.proxy.nginx.NginxController }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

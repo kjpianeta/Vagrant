@@ -1,0 +1,60 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogTemplateItemDto</type>
+  <id>3-bash-web-and-riak-template:0.9.0</id>
+  <displayName>Template 3: Bash Web Server and Scaling Riak Cluster</displayName>
+  <catalogItemId>3-bash-web-and-riak-template:0.9.0</catalogItemId>
+  <description>Sample YAML building on Template 2, 
+composing that blueprint with a Riak cluster and injecting the URL
+</description>
+  <registeredTypeName>3-bash-web-and-riak-template</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>name: Bash Web Server and Riak Cluster (Brooklyn Example)
+
+# this example *references* the previous one, 
+# combining it with a stock blueprint for a Riak cluster,
+# and shows how a sensor from the latter can be injected
+
+services:
+
+# reference template 2, overriding message to point at riak 
+- type:           2-bash-web-server-template
+  brooklyn.config:
+    my.message:   $brooklyn:formatString(&quot;connected to Riak at %s&quot;,
+                      $brooklyn:entity(&quot;riak-cluster&quot;).attributeWhenReady(&quot;main.uri&quot;))
+  # and clear the location defined there so it is taken from this template
+  locations:      []
+                      
+# use the off-the-shelf Riak cluster
+- type:           org.apache.brooklyn.entity.nosql.riak.RiakCluster
+  id:             riak-cluster
+  initialSize:    3
+  # and add a policy to scale based on ops per minute
+  brooklyn.policies:
+  - type: org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy
+    brooklyn.config:
+      metric: riak.node.ops.1m.perNode
+      # more than 100 ops per second (6k/min) scales out, less than 50 scales back
+      # up to a max of 8 riak nodes here (can be changed in GUI / REST API afterwards)
+      metricLowerBound: 3000
+      metricUpperBound: 6000
+      minPoolSize: 3
+      maxPoolSize: 8
+      resizeUpStabilizationDelay: 30s
+      resizeDownStabilizationDelay: 5m
+    
+location:
+  jclouds:aws-ec2:
+    region:       eu-central-1
+    # edit these (or delete if credentials specified in brooklyn.properties)      
+    identity:     &lt;REPLACE&gt;
+    credential:   &lt;REPLACE&gt;
+
+</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>TEMPLATE</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Application</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

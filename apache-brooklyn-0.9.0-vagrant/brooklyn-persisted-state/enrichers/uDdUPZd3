@@ -1,0 +1,19 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.software.base.SoftwareProcessImpl$ServiceNotUpDiagnosticsCollector</type>
+  <id>uDdUPZd3</id>
+  <displayName>org.apache.brooklyn.entity.software.base.SoftwareProcessImpl.ServiceNotUpDiagnosticsCollector</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>service-not-up-diagnostics-collector</string>
+  </tags>
+  <uniqueTag>service-not-up-diagnostics-collector</uniqueTag>
+  <config>
+    <uniqueTag>service-not-up-diagnostics-collector</uniqueTag>
+    <tags>
+      <set>
+        <string>service-not-up-diagnostics-collector</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

@@ -1,0 +1,19 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>cluster:0.9.0</id>
+  <catalogItemId>cluster:0.9.0</catalogItemId>
+  <description>Create a cluster of entities, resizable, with starting size &quot;initialSize&quot;,
+and using a spec supplied in the &quot;memberSpec&quot; key.
+</description>
+  <registeredTypeName>cluster</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>services:
+- type: org.apache.brooklyn.entity.group.DynamicCluster</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

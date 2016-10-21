@@ -1,0 +1,43 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.enricher.RollingTimeWindowMeanEnricher</type>
+  <id>JpwwY0ZF</id>
+  <displayName>org.apache.brooklyn.policy.enricher.RollingTimeWindowMeanEnricher</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>RollingTimeWindowMeanEnricher:webapp.reqs.processingTime.fraction.last/10s-&gt;webapp.reqs.processingTime.fraction.windowed</string>
+  </tags>
+  <uniqueTag>RollingTimeWindowMeanEnricher:webapp.reqs.processingTime.fraction.last/10s-&gt;webapp.reqs.processingTime.fraction.windowed</uniqueTag>
+  <config>
+    <timePeriod>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>10000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </timePeriod>
+    <producer>
+      <entityProxy>venlfOlj</entityProxy>
+    </producer>
+    <source>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.processingTime.fraction.last</name>
+        <description>Fraction of time spent processing, reported by webserver (percentage, last datapoint)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </source>
+    <target>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.processingTime.fraction.windowed</name>
+        <description>Fraction of time spent processing, reported by webserver (percentage, over time window)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </target>
+    <uniqueTag>RollingTimeWindowMeanEnricher:webapp.reqs.processingTime.fraction.last/10s-&gt;webapp.reqs.processingTime.fraction.windowed</uniqueTag>
+    <tags>
+      <set>
+        <string>RollingTimeWindowMeanEnricher:webapp.reqs.processingTime.fraction.last/10s-&gt;webapp.reqs.processingTime.fraction.windowed</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

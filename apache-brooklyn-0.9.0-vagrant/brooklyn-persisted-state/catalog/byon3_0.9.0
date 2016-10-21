@@ -1,0 +1,22 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogLocationItemDto</type>
+  <id>byon3:0.9.0</id>
+  <displayName>Vagrant BYON VM 3</displayName>
+  <catalogItemId>byon3:0.9.0</catalogItemId>
+  <registeredTypeName>byon3</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>brooklyn.locations:
+- type: byon
+  brooklyn.config:
+    user: vagrant
+    password: vagrant
+    hosts:
+    - 10.10.10.103</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>LOCATION</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.location.Location</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.location.LocationSpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

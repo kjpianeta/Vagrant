@@ -1,0 +1,116 @@
+#**********************************************************
+#
+# Author: Keneth Pianeta <kpianeta@cisco.com>
+#
+# Default Config
+#   check_newer_vagrant_box
+#     enable/disable the vagrant check for an updated box
+#   run_os_update
+#     enable/disable running a yum/apt-get update on box start
+#
+# GOCD Server Config
+#   shell:env:AGENT_KEY
+#     specifies the key hash used by gocd agents when auto-registering with server
+#
+#**********************************************************
+---
+default_config:
+    check_newer_vagrant_box: true
+    run_os_update: true
+servers:
+  - name:
+    box: ubuntu/trusty64
+    ram: 4096
+    cpus: 4
+    shared_folders:
+     - guest: /Users/kpianeta/Code/git/csm
+       host: /opt/cisco/csm
+       owner: root
+       group: root
+       mount_options: ["dmode=777,fmode=777"]
+       create: true
+    forwarded_ports:
+     - guest: 8081
+       host: 8081
+     - guest: 8080
+       host: 8080       
+
+  - name: gocd-server
+    box: ubuntu/wily64
+    ram: 4096
+    cpus: 4
+    shared_folders:
+     - guest: /var/lib/go-server
+       host: var/lib/go-server
+       owner: root
+       group: root
+    forwarded_ports:
+     - guest: 8153
+       host: 8153
+     - guest: 8154
+       host: 8154
+    shell:
+      env:
+        AGENT_KEY: 5d47a77d32202c58837f269a0d1c60c7
+      cmd:
+        - echo "export GO_SERVER_URL=\"https://$(hostname):8154/go\""
+        - sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+        - echo "export DEBIAN_FRONTEND=noninteractive" | sudo tee -a /etc/profile
+        - echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
+        - echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" | sudo tee /etc/apt/sources.list.d/docker.list
+        - curl -s https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add - 
+        - sudo apt-get update 
+        - apt-cache policy docker-engine
+        - sudo apt-get install -y linux-image-extra-$(uname -r) apt-transport-https ca-certificates docker-engine go-server 
+        - sudo apt-get install -y go-agent python-dev libffi-dev libssl-dev
+        - sudo gpasswd -a go docker
+        - sudo mkdir -p /var/go/.ssh && sudo chown -R go:go /var/go/ && sudo cp -p /vagrant/files/ssh/* /var/go/.ssh/ && sudo chmod 600 /var/go/.ssh/* && sudo chown -R go:go /var/go/ 
+        - sudo mkdir -p /var/lib/go-agent/config/ || true
+        - echo "agent.auto.register.key=5d47a77d32202c58837f269a0d1c60c7" | sudo tee -a /var/lib/go-agent/config/autoregister.properties
+        - echo "agent.auto.register.environments=OSE" | sudo tee -a /var/lib/go-agent/config/autoregister.properties
+        - echo "agent.auto.register.resources=lwr, openstack, fuel" | sudo tee -a /var/lib/go-agent/config/autoregister.properties
+        - echo "agent.auto.register.hostname=gocd-local-agent" | sudo tee -a /var/lib/go-agent/config/autoregister.properties
+        - sudo wget -q -nc https://github.com/manojlds/gocd-docker/releases/download/0.1.27/docker-task-assembly-0.1.27.jar -P /var/lib/go-server/plugins/external/ || true
+        - sudo wget -q -nc https://github.com/rjgarciap/ApacheBrooklyn-Task-Plugin/releases/download/v1.0/apache-brooklyn-plugin.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/Haufe-Lexware/gocd-plugins/releases/download/v1.0.0-beta/gocd-docker-pipeline-plugin-1.0.0.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/gocd-contrib/gocd-oauth-login/releases/download/v1.2/github-oauth-login-1.2.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/gocd-contrib/email-notifier/releases/download/v0.1/email-notifier-0.1.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/4finance/go-plugin-groovy/releases/download/1.0.1/go-plugin-groovy-1.0.1.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/gocd-contrib/script-executor-task/releases/download/0.2/script-executor-0.2.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/manojlds/gocd-docker/releases/download/0.1.27/docker-task-assembly-0.1.27.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo wget -q -nc https://github.com/tusharm/go-artifactory-plugin/releases/download/v1.0.0-62/go-artifactory-plugin-1.0.0-62.distribution.jar -P /var/lib/go-server/plugins/external/  || true
+        - sudo chown -R go:go /var/go/ 
+        - sudo systemctl daemon-reload || true
+        - sudo systemctl enable go-server || true
+        - sudo systemctl enable go-agent || true
+        - sudo systemctl start go-server || true
+        - sudo systemctl start go-agent || true
+        - sudo systemctl status go-server
+        - sudo systemctl status go-agent
+        - sudo wget -q -nc -r --no-parent -l1 https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/ -P /etc/bash_completion.d/ || true
+        - curl -s -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` | sudo tee /usr/local/bin/docker-machine >/dev/null && sudo chown go:docker /usr/local/bin/docker-machine && sudo chmod +x /usr/local/bin/docker-machine && sudo su - go -c '/usr/local/bin/docker-machine --version'
+        - sudo apt-get remove python-pip || true
+        - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo -H python && sudo -H pip install python-openstackclient
+        # - echo "PS1='[\u@\h \W$(__docker_machine_ps1)]\$ '" | sudo tee -a /etc/bash.bashrc
+
+  - name: byon1
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.101
+  - name: byon2
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.102
+  - name: byon3
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.103
+  - name: byon4
+    box: ubuntu/wily64
+    ram: 512
+    cpus: 2
+    ip: 10.10.10.104
+...

@@ -1,0 +1,24 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.ha.ServiceFailureDetector</type>
+  <id>xZyPdrjl</id>
+  <displayName>org.apache.brooklyn.policy.ha.ServiceFailureDetector</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>service.state.actual</string>
+  </tags>
+  <uniqueTag>service.state.actual</uniqueTag>
+  <config>
+    <entityFailed.stabilizationDelay>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>30000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </entityFailed.stabilizationDelay>
+    <uniqueTag>service.state.actual</uniqueTag>
+    <tags>
+      <set>
+        <string>service.state.actual</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

@@ -1,0 +1,4 @@
+base:
+  '*':
+    - dockermachine
+    - dockercompose

@@ -1,0 +1,1282 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.group.DynamicClusterImpl</type>
+  <id>rKx01txb</id>
+  <displayName>Cluster</displayName>
+  <parent>Ha4plERs</parent>
+  <children>
+    <string>DndXVKoU</string>
+    <string>JLFCTfv8</string>
+  </children>
+  <config>
+    <dynamiccluster.memberspec>
+      <org.apache.brooklyn.api.entity.EntitySpec>
+        <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+        <type>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer</type>
+        <displayName>Tomcat Server</displayName>
+        <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+        <tags class="MutableSet">
+          <org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+            <kind>yaml_spec</kind>
+            <contents>services: [{ type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer }]</contents>
+          </org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+        </tags>
+        <parameters class="ImmutableList">
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>archive.nameFormat</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.BasicConfigKey$BasicConfigKeyOverwriting">
+              <name>archive.nameFormat</name>
+              <type>java.lang.String</type>
+              <description>The format for the directory created when the installation archive is extracted, if required. The version string will be passed in as the first argument, replacing the %s format specifier</description>
+              <defaultValue class="string">apache-tomcat-%s</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <parentKey class="configKey">
+                <name>archive.nameFormat</name>
+                <type>java.lang.String</type>
+                <description>The format for the directory created when the installation archive is extracted, if required. The version string will be passed in as the first argument, replacing the %s format specifier</description>
+                <reconfigurable>false</reconfigurable>
+                <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              </parentKey>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>children.startable.mode</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>children.startable.mode</name>
+              <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$ChildStartableMode</type>
+              <description>Controls behaviour when starting Startable children as part of this entity&apos;s lifecycle.</description>
+              <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$ChildStartableMode">NONE</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>customize.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>customize.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking customize until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>dontRequireTtyForSudo</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>dontRequireTtyForSudo</name>
+              <type>java.lang.Boolean</type>
+              <description>Whether to explicitly set /etc/sudoers, so don&apos;t need tty (will leave unchanged if &apos;false&apos;); some machines require a tty for sudo; brooklyn by default does not use a tty (so that it can get separate error+stdout streams); you can enable a tty as an option to every ssh command, or you can do it once and modify the machine so that a tty is not subsequently required.</description>
+              <defaultValue class="boolean">false</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>download.addon.urls</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>download.addon.urls</name>
+              <type>java.util.Map</type>
+              <description>URL patterns for downloading named add-ons (will substitute things like ${version} automatically)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>download.url</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.BasicConfigKey$BasicConfigKeyOverwriting">
+              <name>download.url</name>
+              <type>java.lang.String</type>
+              <description>URL pattern for downloading the installer (will substitute things like ${version} automatically)</description>
+              <defaultValue class="string">http://download.nextag.com/apache/tomcat/tomcat-7/v${version}/bin/apache-tomcat-${version}.tar.gz</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <parentKey class="configKey">
+                <name>download.url</name>
+                <type>java.lang.String</type>
+                <description>URL pattern for downloading the installer (will substitute things like ${version} automatically)</description>
+                <reconfigurable>false</reconfigurable>
+                <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              </parentKey>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>entity.running</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>entity.running</name>
+              <type>java.lang.Boolean</type>
+              <description>Skip the startup process entirely, if service already running</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>entity.started</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>entity.started</name>
+              <type>java.lang.Boolean</type>
+              <description>Skip the startup process entirely, for running services</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>expandedinstall.dir</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>expandedinstall.dir</name>
+              <type>java.lang.String</type>
+              <description>Directory for installed artifacts (e.g. expanded dir after unpacking .tgz)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>files.install</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>files.install</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of files, to be copied before install, to destination name relative to installDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>files.preinstall</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>files.preinstall</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of files, to be copied before install, to destination name relative to installDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>files.runtime</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>files.runtime</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of files, to be copied before customisation, to destination name relative to runDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>http.port</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>http.port</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>HTTP port</description>
+              <defaultValue class="org.apache.brooklyn.core.location.PortRanges$AggregatePortRange">
+                <ranges class="ImmutableList">
+                  <org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                    <port>8080</port>
+                  </org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                  <org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                    <start>18080</start>
+                    <end>65535</end>
+                    <delta>1</delta>
+                  </org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                </ranges>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>https.port</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>https.port</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>HTTP port (with SSL/TLS)</description>
+              <defaultValue class="org.apache.brooklyn.core.location.PortRanges$AggregatePortRange">
+                <ranges class="ImmutableList">
+                  <org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                    <port>8443</port>
+                  </org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                  <org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                    <start>18443</start>
+                    <end>65535</end>
+                    <delta>1</delta>
+                  </org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                </ranges>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>inboundPorts.autoInfer</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>inboundPorts.autoInfer</name>
+              <type>java.lang.Boolean</type>
+              <description>If set to false turns off the opening of ports based on naming convention, and also those that are of type PortRange in Java entities</description>
+              <defaultValue class="boolean">true</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>inboundPorts.configRegex</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>inboundPorts.configRegex</name>
+              <type>java.lang.String</type>
+              <description>Regex governing the opening of ports based on config names</description>
+              <defaultValue class="string">.*\.port</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>install.dir</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>install.dir</name>
+              <type>java.lang.String</type>
+              <description>Directory for this software to be installed in</description>
+              <defaultValue class="string">${config[&apos;onbox.base.dir&apos;]!config[&apos;brooklyn.datadir&apos;]!&apos;/&lt;ERROR&gt;-ONBOX_BASE_DIR-not-set&apos;}/installs/${(config[&apos;install.unique_label&apos;]??)?string(config[&apos;install.unique_label&apos;]!&apos;X&apos;,(entity.entityType.simpleName)+((config[&apos;install.version&apos;]??)?string(&apos;_&apos;+(config[&apos;install.version&apos;]!&apos;X&apos;),&apos;&apos;)))}</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>install.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>install.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking install until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>install.skip</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>install.skip</name>
+              <type>java.lang.Boolean</type>
+              <description>Skip the driver install commands entirely, for pre-installed software</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>install.unique_label</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>install.unique_label</name>
+              <type>java.lang.String</type>
+              <description>Provides a label which uniquely identifies an installation, used in the computation of the install dir; this should include something readable, and must include a hash of all data which differentiates an installation (e.g. version, plugins, etc), but should be the same where install dirs can be shared to allow for re-use</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>install.version</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.BasicConfigKey$BasicConfigKeyOverwriting">
+              <name>install.version</name>
+              <type>java.lang.String</type>
+              <description>Suggested version</description>
+              <defaultValue class="string">7.0.65</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <parentKey class="configKey">
+                <name>install.version</name>
+                <type>java.lang.String</type>
+                <description>Suggested version</description>
+                <reconfigurable>false</reconfigurable>
+                <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              </parentKey>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>java.check.hostname.bug</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>java.check.hostname.bug</name>
+              <type>java.lang.Boolean</type>
+              <description>Check whether hostname is too long and will likely crash Javadue to bug 7089443</description>
+              <defaultValue class="boolean">true</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>java.opts</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.SetConfigKey">
+              <name>java.opts</name>
+              <type>java.util.Set</type>
+              <description>Java command line options</description>
+              <defaultValue class="com.google.common.collect.EmptyImmutableSet"/>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <subType>java.lang.String</subType>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>java.sysprops</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.MapConfigKey">
+              <name>java.sysprops</name>
+              <type>java.util.Map</type>
+              <description>Java command line system properties</description>
+              <defaultValue class="map"/>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <subType>java.lang.String</subType>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>java.version.required</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>java.version.required</name>
+              <type>java.lang.String</type>
+              <description>Java version required</description>
+              <defaultValue class="string">1.7</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.agent.local.path</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.agent.local.path</name>
+              <type>java.lang.String</type>
+              <description>Path to JMX driver on the local machine</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.agent.mode</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.agent.mode</name>
+              <type>org.apache.brooklyn.entity.java.UsesJmx$JmxAgentModes</type>
+              <description>What type of JMX agent to use; defaults to null (autodetect) which means JMXMP_AND_RMI allowing firewall access through a single port as well as local access supporting jconsole (unless JMX_SSL_ENABLED is set, in which case it is JMXMP only)</description>
+              <defaultValue class="org.apache.brooklyn.entity.java.UsesJmx$JmxAgentModes">AUTODETECT</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.context</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.context</name>
+              <type>java.lang.String</type>
+              <description>JMX context path</description>
+              <defaultValue class="string">jmxrmi</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.direct.port</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.direct.port</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>JMX direct/private port (e.g. JMX RMI server port, or JMXMP port, but not RMI registry port)</description>
+              <defaultValue class="org.apache.brooklyn.core.location.PortRanges$LinearPortRange">
+                <start>31001</start>
+                <end>65535</end>
+                <delta>1</delta>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.direct.port.legacy.NOT_USED</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.direct.port.legacy.NOT_USED</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>Legacy definition JMX direct/private port (e.g. JMX RMI server port, or JMXMP port, but not RMI registry port)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.enabled</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.enabled</name>
+              <type>java.lang.Boolean</type>
+              <description>JMX enabled</description>
+              <defaultValue class="boolean">true</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.password</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.password</name>
+              <type>java.lang.String</type>
+              <description>JMX password</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.ssl.access.cert</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.ssl.access.cert</name>
+              <type>java.security.cert.Certificate</type>
+              <description>certificate of key used to access a JMX agent</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.ssl.access.key</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.ssl.access.key</name>
+              <type>java.security.PrivateKey</type>
+              <description>key used to access a JMX agent (typically per entity, embedded in the managed JVM)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.ssl.enabled</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.ssl.enabled</name>
+              <type>java.lang.Boolean</type>
+              <description>JMX over JMXMP enabled with SSL/TLS</description>
+              <defaultValue class="boolean">false</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>jmx.user</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>jmx.user</name>
+              <type>java.lang.String</type>
+              <description>JMX username</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>launch.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>launch.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking launch until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>metrics.usage.retrieve</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>metrics.usage.retrieve</name>
+              <type>java.lang.Boolean</type>
+              <description>Whether to retrieve the usage (e.g. performance) metrics</description>
+              <defaultValue class="boolean">true</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>openIptables</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>openIptables</name>
+              <type>java.lang.Boolean</type>
+              <description>Whether to open the INBOUND_PORTS via iptables rules; if true then ssh in to run iptables commands, as part of machine provisioning</description>
+              <defaultValue class="boolean">false</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>post.customize.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>post.customize.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run after the customize method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>post.install.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>post.install.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run after the install method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>post.launch.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>post.launch.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run after the launch method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>pre.customize.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>pre.customize.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run prior to the customize method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>pre.install.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>pre.install.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run prior to the install method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>pre.launch.command</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>pre.launch.command</name>
+              <type>java.lang.String</type>
+              <description>Command to be run prior to the launch method being called on the driver</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>provisioning.properties</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.MapConfigKey">
+              <name>provisioning.properties</name>
+              <type>java.util.Map</type>
+              <description>Custom properties to be passed in when provisioning a new machine</description>
+              <defaultValue class="MutableMap"/>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <subType>java.lang.Object</subType>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>requiredOpenLoginPorts</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>requiredOpenLoginPorts</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.Integer</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Collection</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>The port(s) to be opened, to allow login</description>
+              <defaultValue class="com.google.common.collect.SingletonImmutableSet">
+                <int>22</int>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>resources.install.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>resources.install.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking install resources until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>resources.runtime.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>resources.runtime.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking runtime resources until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>rmi.registry.port</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>rmi.registry.port</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>RMI registry port, used for discovering JMX (private) port</description>
+              <defaultValue class="org.apache.brooklyn.core.location.PortRanges$AggregatePortRange">
+                <ranges class="ImmutableList">
+                  <org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                    <port>1099</port>
+                  </org.apache.brooklyn.core.location.PortRanges_-SinglePort>
+                  <org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                    <start>19099</start>
+                    <end>65535</end>
+                    <delta>1</delta>
+                  </org.apache.brooklyn.core.location.PortRanges_-LinearPortRange>
+                </ranges>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>run.dir</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>run.dir</name>
+              <type>java.lang.String</type>
+              <description>Directory for this software to be run from</description>
+              <defaultValue class="string">${config[&apos;onbox.base.dir&apos;]!config[&apos;brooklyn.datadir&apos;]!&apos;/&lt;ERROR&gt;-ONBOX_BASE_DIR-not-set&apos;}/apps/${entity.applicationId}/entities/${entity.entityType.simpleName}_${entity.id}</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>setup.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>setup.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking setup until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>shell.env</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.MapConfigKey">
+              <name>shell.env</name>
+              <type>java.util.Map</type>
+              <description>Map of environment variables to pass to the runtime shell</description>
+              <defaultValue class="com.google.common.collect.EmptyImmutableBiMap"/>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <subType>java.lang.Object</subType>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>softwareProcess.lifecycleTasks</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>softwareProcess.lifecycleTasks</name>
+              <type>org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks</type>
+              <description>An object that handles lifecycle of an entity&apos;s associated machine.</description>
+              <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks">
+                <machineInitTasks/>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>softwareProcess.maxSensorRebindDelay</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>softwareProcess.maxSensorRebindDelay</name>
+              <type>org.apache.brooklyn.util.time.Duration</type>
+              <description>The maximum delay to apply when reconnecting sensors when rebinding to this entity. Brooklyn will wait a random amount of time, up to the value of this config key, to avoid a thundering herd problem when the entity shares its machine with several others. Set to null or to 0 to disable any delay.</description>
+              <defaultValue class="org.apache.brooklyn.util.time.Duration">
+                <nanos>10000000000</nanos>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>start.latch</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>start.latch</name>
+              <type>java.lang.Boolean</type>
+              <description>Latch for blocking start until ready</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>start.timeout</label>
+            <pinned>false</pinned>
+            <configKey class="org.apache.brooklyn.core.config.BasicConfigKey$BasicConfigKeyOverwriting">
+              <name>start.timeout</name>
+              <type>org.apache.brooklyn.util.time.Duration</type>
+              <description>Time to wait for process and for SERVICE_UP before failing (in seconds, default 2m)</description>
+              <defaultValue class="org.apache.brooklyn.util.time.Duration">
+                <nanos>300000000000</nanos>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              <parentKey class="configKey">
+                <name>start.timeout</name>
+                <type>org.apache.brooklyn.util.time.Duration</type>
+                <description>Time to wait for process and for SERVICE_UP before failing (in seconds, default 2m)</description>
+                <defaultValue class="org.apache.brooklyn.util.time.Duration">
+                  <nanos>120000000000</nanos>
+                </defaultValue>
+                <reconfigurable>false</reconfigurable>
+                <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+              </parentKey>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>stopIptables</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>stopIptables</name>
+              <type>java.lang.Boolean</type>
+              <description>Whether to stop iptables entirely; if true then ssh in to stop the iptables service, as part of machine provisioning</description>
+              <defaultValue class="boolean">false</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>templates.install</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>templates.install</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of templates, to be filled in and copied before install, to destination name relative to installDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>templates.preinstall</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>templates.preinstall</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of templates, to be filled in and copied before pre-install, to destination name relative to installDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>templates.runtime</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>templates.runtime</name>
+              <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+                <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+                  <argumentsList>
+                    <java-class>java.lang.String</java-class>
+                    <java-class>java.lang.String</java-class>
+                  </argumentsList>
+                  <rawType>java.util.Map</rawType>
+                </runtimeType>
+              </typeToken>
+              <description>Mapping of templates, to be filled in and copied before customisation, to destination name relative to runDir</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>tomcat.serverxml</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>tomcat.serverxml</name>
+              <type>java.lang.String</type>
+              <description>The file to template and use as the Tomcat process&apos; server.xml</description>
+              <defaultValue class="string">classpath://org/apache/brooklyn/entity/webapp/tomcat/server.xml</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="org.apache.brooklyn.util.core.ResourcePredicates$ResourceExistsPredicate"/>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>tomcat.shutdownport</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>tomcat.shutdownport</name>
+              <type>org.apache.brooklyn.api.location.PortRange</type>
+              <description>Suggested shutdown port</description>
+              <defaultValue class="org.apache.brooklyn.core.location.PortRanges$LinearPortRange">
+                <start>31880</start>
+                <end>65535</end>
+                <delta>1</delta>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>tomcat.webxml</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>tomcat.webxml</name>
+              <type>java.lang.String</type>
+              <description>The file to template and use as the Tomcat process&apos; web.xml</description>
+              <defaultValue class="string">classpath://org/apache/brooklyn/entity/webapp/tomcat/web.xml</defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="org.apache.brooklyn.util.core.ResourcePredicates$ResourceExistsPredicate"/>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>wars.by.context</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>wars.by.context</name>
+              <type>java.util.Map</type>
+              <description>Map of context keys (path in user-facing URL, typically without slashes) to archives (e.g. WARs by URL) to deploy, supporting file: and classpath: prefixes)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>wars.named</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>wars.named</name>
+              <type>java.util.List</type>
+              <description>Archive files to deploy, as URL strings (supporting file: and classpath: prefixes); context (path in user-facing URL) will be inferred by name</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>wars.root</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>wars.root</name>
+              <type>java.lang.String</type>
+              <description>WAR file to deploy as the ROOT, as URL (supporting file: and classpath: prefixes)</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>webapp.enabledProtocols</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>webapp.enabledProtocols</name>
+              <type>java.util.Set</type>
+              <description>List of enabled protocols (e.g. http, https)</description>
+              <defaultValue class="com.google.common.collect.SingletonImmutableSet">
+                <string>http</string>
+              </defaultValue>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+          <org.apache.brooklyn.core.objs.BasicSpecParameter>
+            <label>webapp.https.ssl</label>
+            <pinned>false</pinned>
+            <configKey class="configKey">
+              <name>webapp.https.ssl</name>
+              <type>org.apache.brooklyn.entity.webapp.HttpsSslConfig</type>
+              <description>SSL Configuration for HTTPS</description>
+              <reconfigurable>false</reconfigurable>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+          </org.apache.brooklyn.core.objs.BasicSpecParameter>
+        </parameters>
+        <flags/>
+        <config>
+          <entry>
+            <configKey>
+              <name>camp.template.id</name>
+              <type>java.lang.String</type>
+              <description>UID of the component in the CAMP template from which this entity was created</description>
+              <reconfigurable>false</reconfigurable>
+              <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+              <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+            </configKey>
+            <string>ohOf6c8e</string>
+          </entry>
+          <entry>
+            <configKey reference="../../../parameters/org.apache.brooklyn.core.objs.BasicSpecParameter[67]/configKey"/>
+            <string>http://search.maven.org/remotecontent?filepath=org/apache/brooklyn/example/brooklyn-example-hello-world-webapp/0.8.0-incubating/brooklyn-example-hello-world-webapp-0.8.0-incubating.war</string>
+          </entry>
+        </config>
+        <policies/>
+        <policySpecs>
+          <org.apache.brooklyn.api.policy.PolicySpec>
+            <catalogItemId>org.apache.brooklyn.policy.ha.ServiceRestarter:0.9.0</catalogItemId>
+            <type>org.apache.brooklyn.policy.ha.ServiceRestarter</type>
+            <displayName>Service Restarter</displayName>
+            <catalogItemId>org.apache.brooklyn.policy.ha.ServiceRestarter:0.9.0</catalogItemId>
+            <tags class="MutableSet"/>
+            <parameters class="ImmutableList">
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>failOnRecurringFailuresInThisDuration</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>failOnRecurringFailuresInThisDuration</name>
+                  <type>org.apache.brooklyn.util.time.Duration</type>
+                  <description>Reports entity as failed if it fails two or more times in this time window</description>
+                  <defaultValue class="org.apache.brooklyn.util.time.Duration">
+                    <nanos>180000000000</nanos>
+                  </defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>failureSensorToMonitor</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>failureSensorToMonitor</name>
+                  <type>org.apache.brooklyn.api.sensor.Sensor</type>
+                  <description></description>
+                  <defaultValue class="org.apache.brooklyn.core.sensor.BasicNotificationSensor">
+                    <type>org.apache.brooklyn.policy.ha.HASensors$FailureDescriptor</type>
+                    <name>ha.entityFailed</name>
+                    <description>Indicates that an entity has failed</description>
+                  </defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>setOnFireOnFailure</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>setOnFireOnFailure</name>
+                  <type>java.lang.Boolean</type>
+                  <description></description>
+                  <defaultValue class="boolean">true</defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+            </parameters>
+            <flags>
+              <failOnRecurringFailuresInThisDuration>5m</failOnRecurringFailuresInThisDuration>
+            </flags>
+            <config/>
+          </org.apache.brooklyn.api.policy.PolicySpec>
+        </policySpecs>
+        <enrichers/>
+        <enricherSpecs>
+          <org.apache.brooklyn.api.sensor.EnricherSpec>
+            <type>org.apache.brooklyn.policy.ha.ServiceFailureDetector</type>
+            <tags class="MutableSet"/>
+            <parameters class="ImmutableList">
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>enricher.suppressDuplicates</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>enricher.suppressDuplicates</name>
+                  <type>java.lang.Boolean</type>
+                  <description>Whether duplicate values published by this enricher should be suppressed</description>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>entityFailed.republishTime</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>entityFailed.republishTime</name>
+                  <type>org.apache.brooklyn.util.time.Duration</type>
+                  <description>Publish failed state periodically at the specified intervals, null to disable.</description>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>entityFailed.stabilizationDelay</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>entityFailed.stabilizationDelay</name>
+                  <type>org.apache.brooklyn.util.time.Duration</type>
+                  <description>Time period for which the service must be consistently down for (e.g. doesn&apos;t report down-up-down) before emitting ENTITY_FAILED</description>
+                  <defaultValue class="org.apache.brooklyn.util.time.Duration">
+                    <nanos>0</nanos>
+                  </defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>entityRecovered.stabilizationDelay</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>entityRecovered.stabilizationDelay</name>
+                  <type>org.apache.brooklyn.util.time.Duration</type>
+                  <description>For a failed entity, time period for which the service must be consistently up for (e.g. doesn&apos;t report up-down-up) before emitting ENTITY_RECOVERED</description>
+                  <defaultValue class="org.apache.brooklyn.util.time.Duration" reference="../../../org.apache.brooklyn.core.objs.BasicSpecParameter[3]/configKey/defaultValue"/>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>monitorServiceProblems</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>monitorServiceProblems</name>
+                  <type>java.lang.Boolean</type>
+                  <description>Whether to monitor service problems, and emit on failures there (if set to false, this monitors only service up)</description>
+                  <defaultValue class="boolean">true</defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>onlyReportIfPreviouslyUp</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>onlyReportIfPreviouslyUp</name>
+                  <type>java.lang.Boolean</type>
+                  <description>Prevents the policy from emitting ENTITY_FAILED if the entity fails on startup (ie has never been up)</description>
+                  <defaultValue class="boolean">true</defaultValue>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+              <org.apache.brooklyn.core.objs.BasicSpecParameter>
+                <label>serviceOnFire.stabilizationDelay</label>
+                <pinned>false</pinned>
+                <configKey class="configKey">
+                  <name>serviceOnFire.stabilizationDelay</name>
+                  <type>org.apache.brooklyn.util.time.Duration</type>
+                  <description>Time period for which the service must be consistently down for (e.g. doesn&apos;t report down-up-down) before concluding ON_FIRE</description>
+                  <defaultValue class="org.apache.brooklyn.util.time.Duration" reference="../../../org.apache.brooklyn.core.objs.BasicSpecParameter[3]/configKey/defaultValue"/>
+                  <reconfigurable>false</reconfigurable>
+                  <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+                </configKey>
+              </org.apache.brooklyn.core.objs.BasicSpecParameter>
+            </parameters>
+            <flags>
+              <entityFailed.stabilizationDelay>30s</entityFailed.stabilizationDelay>
+            </flags>
+            <config/>
+          </org.apache.brooklyn.api.sensor.EnricherSpec>
+        </enricherSpecs>
+        <locations/>
+        <locationSpecs/>
+        <additionalInterfaces/>
+        <entityInitializers/>
+        <children/>
+        <members/>
+        <groups/>
+        <immutable>false</immutable>
+      </org.apache.brooklyn.api.entity.EntitySpec>
+    </dynamiccluster.memberspec>
+    <cluster.initial.size type="int">1</cluster.initial.size>
+    <camp.template.id>CBAlVKgA</camp.template.id>
+    <camp.plan.id>cluster</camp.plan.id>
+  </config>
+  <members>
+    <string>JLFCTfv8</string>
+  </members>
+  <attributes>
+    <service.isUp type="boolean">false</service.isUp>
+    <group.members.count type="int">1</group.members.count>
+    <group.members>
+      <com.google.common.collect.SingletonImmutableSet>
+        <entityProxy>JLFCTfv8</entityProxy>
+      </com.google.common.collect.SingletonImmutableSet>
+    </group.members>
+    <next.cluster.member.id>
+      <org.apache.brooklyn.entity.group.DynamicClusterImpl_-NextClusterMemberIdSupplier>
+        <nextId>
+          <value>3</value>
+        </nextId>
+      </org.apache.brooklyn.entity.group.DynamicClusterImpl_-NextClusterMemberIdSupplier>
+    </next.cluster.member.id>
+    <cluster.one__and__all.members.up type="boolean">true</cluster.one__and__all.members.up>
+    <webapp.reqs.perSec.perNode type="double">0.0</webapp.reqs.perSec.perNode>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468888665530</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+    <service.problems>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">Required entity not healthy: TomcatServerImpl{id=JLFCTfv8}</entry>
+      </MutableMap>
+    </service.problems>
+    <dynamiccluster.quarantineGroup>
+      <entityProxy>DndXVKoU</entityProxy>
+    </dynamiccluster.quarantineGroup>
+    <cluster.first.entity>
+      <entityProxy reference="../../group.members/com.google.common.collect.SingletonImmutableSet/entityProxy"/>
+    </cluster.first.entity>
+    <service.notUp.indicators>
+      <MutableMap>
+        <entry key="service-not-up-indicators-from-children-and-members">TomcatServerImpl{id=JLFCTfv8} is not up</entry>
+      </MutableMap>
+    </service.notUp.indicators>
+  </attributes>
+  <policies>
+    <string>hhvSm5pK</string>
+    <string>evW6xZ9Z</string>
+  </policies>
+  <enrichers>
+    <string>QkLcNMnD</string>
+    <string>O3MrNR1q</string>
+    <string>DiOPd3gZ</string>
+    <string>zVbizPeY</string>
+    <string>A1108LzJ</string>
+  </enrichers>
+  <configKeys>
+    <camp.template.id>
+      <configKey reference="../../../config/dynamiccluster.memberspec/org.apache.brooklyn.api.entity.EntitySpec/config/entry/configKey"/>
+    </camp.template.id>
+    <camp.plan.id>
+      <configKey>
+        <name>camp.plan.id</name>
+        <type>java.lang.String</type>
+        <description>Identifier supplied in the deployment plan for component to which this entity corresponds (human-readable, for correlating across plan, template, and instance)</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None" reference="../../../../config/dynamiccluster.memberspec/org.apache.brooklyn.api.entity.EntitySpec/config/entry/configKey/inheritance"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.plan.id>
+  </configKeys>
+  <attributeKeys>
+    <next.cluster.member.id>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.Integer</java-class>
+            </argumentsList>
+            <rawType>com.google.common.base.Supplier</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>next.cluster.member.id</name>
+        <description>Returns the ID number of the next member to be added</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </next.cluster.member.id>
+    <webapp.reqs.perSec.perNode>
+      <attributeSensor>
+        <type>java.lang.Object</type>
+        <name>webapp.reqs.perSec.perNode</name>
+        <description>webapp.reqs.perSec.perNode</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </webapp.reqs.perSec.perNode>
+    <service.state.expected>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle$Transition</type>
+        <name>service.state.expected</name>
+        <description>Last controlled change to service state, indicating what the expected state should be</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state.expected>
+    <service.problems>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.problems</name>
+        <description>A map of namespaced indicators of problems with a service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.problems>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+  </attributeKeys>
+</entity>

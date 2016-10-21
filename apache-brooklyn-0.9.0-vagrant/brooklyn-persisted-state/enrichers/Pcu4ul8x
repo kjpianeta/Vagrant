@@ -1,0 +1,20 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic$ComputeServiceIndicatorsFromChildrenAndMembers</type>
+  <id>Pcu4ul8x</id>
+  <displayName>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic.ComputeServiceIndicatorsFromChildrenAndMembers</displayName>
+  <tags>
+    <string>service-lifecycle-indicators-from-children-and-members</string>
+  </tags>
+  <uniqueTag>service-lifecycle-indicators-from-children-and-members</uniqueTag>
+  <config>
+    <enricher.aggregating.fromMembers type="boolean">true</enricher.aggregating.fromMembers>
+    <enricher.aggregating.fromChildren type="boolean">true</enricher.aggregating.fromChildren>
+    <uniqueTag>service-lifecycle-indicators-from-children-and-members</uniqueTag>
+    <tags>
+      <set>
+        <string>service-lifecycle-indicators-from-children-and-members</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

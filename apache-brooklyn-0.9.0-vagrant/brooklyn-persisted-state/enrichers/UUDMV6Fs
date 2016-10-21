@@ -1,0 +1,29 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic$ComputeServiceIndicatorsFromChildrenAndMembers</type>
+  <id>UUDMV6Fs</id>
+  <displayName>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic.ComputeServiceIndicatorsFromChildrenAndMembers</displayName>
+  <tags>
+    <string>service-not-up-indicators-from-children-and-members</string>
+  </tags>
+  <uniqueTag>service-not-up-indicators-from-children-and-members</uniqueTag>
+  <config>
+    <enricher.service__state.children__and__members.quorum.up>
+      <org.apache.brooklyn.util.collections.QuorumCheck_-NumericQuorumCheck>
+        <minRequiredSize>1</minRequiredSize>
+        <minRequiredRatio>0.0</minRequiredRatio>
+        <allowEmpty>false</allowEmpty>
+        <name>atLeastOne</name>
+      </org.apache.brooklyn.util.collections.QuorumCheck_-NumericQuorumCheck>
+    </enricher.service__state.children__and__members.quorum.up>
+    <enricher.service__state.children__and__members.service__problems.publish type="boolean">false</enricher.service__state.children__and__members.service__problems.publish>
+    <enricher.aggregating.fromMembers type="boolean">true</enricher.aggregating.fromMembers>
+    <enricher.aggregating.fromChildren type="boolean">false</enricher.aggregating.fromChildren>
+    <uniqueTag>service-not-up-indicators-from-children-and-members</uniqueTag>
+    <tags>
+      <set>
+        <string>service-not-up-indicators-from-children-and-members</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

@@ -1,0 +1,96 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogTemplateItemDto</type>
+  <id>2-bash-web-server-template:0.9.0</id>
+  <displayName>Template 2: Bash Web Server</displayName>
+  <catalogItemId>2-bash-web-server-template:0.9.0</catalogItemId>
+  <description>Sample YAML building on Template 1, 
+adding bash commands to launch a Python-based web server
+on port 8020
+</description>
+  <registeredTypeName>2-bash-web-server-template</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>name: Python Web Server (Brooklyn Example)
+
+# this example builds on the previous one, 
+# adding some scripts to initialize the VM
+
+services:
+- type:           vanilla-bash-server
+  name:           My Bash Web Server VM
+  brooklyn.config:
+    install.command: |
+      # install python if not present
+      which python || \
+        { sudo apt-get update &amp;&amp; sudo apt-get install python ; } || \
+        { sudo yum update &amp;&amp; sudo yum install python ; } || \
+        { echo WARNING: cannot install python &amp;&amp; exit 1 ; }
+
+    customize.command: |
+      # create the web page to serve
+      cat &gt; index.html &lt;&lt; EOF
+      
+      Hello world.
+      &lt;p&gt;
+      I am ${ENTITY_INFO}, ${MESSAGE:-a Brooklyn sample}.
+      &lt;p&gt;
+      Created at: `date`
+      &lt;p&gt;
+      I am running at ${HOSTNAME}, with on-box IP configuration:
+      &lt;pre&gt;
+      `ifconfig | grep inet`
+      &lt;/pre&gt;
+      
+      EOF
+
+    launch.command: |
+      # launch in background (ensuring no streams open), and record PID to file
+      nohup python -m SimpleHTTPServer ${PORT:-8020} &lt; /dev/null &gt; output.txt 2&gt;&amp;1 &amp;
+      echo $! &gt; ${PID_FILE:-pid.txt}
+      sleep 5
+      ps -p `cat ${PID_FILE:-pid.txt}`
+      if [ $? -ne 0 ] ; then
+        cat output.txt
+        echo WARNING: python web server not running
+        exit 1
+      fi
+      
+    shell.env:
+      HOSTNAME:     $brooklyn:attributeWhenReady(&quot;host.name&quot;)
+      PORT:         $brooklyn:config(&quot;my.app.port&quot;)
+      ENTITY_INFO:  $brooklyn:component(&quot;this&quot;, &quot;&quot;)
+      MESSAGE:      $brooklyn:config(&quot;my.message&quot;)
+      
+    # custom 
+    my.app.port:  8020
+    my.message:   &quot;good to meet you&quot;
+  
+  brooklyn.enrichers:
+  # publish the URL as a sensor; the GUI will pick this up (main.uri)
+  - type: org.apache.brooklyn.enricher.stock.Transformer
+    brooklyn.config:
+      uniqueTag: url-generator
+      enricher.sourceSensor: host.subnet.hostname
+      # use the definition from Attributes class, as it has a RendererHint so GUI makes it a link
+      enricher.targetSensor: $brooklyn:sensor(&quot;org.apache.brooklyn.core.entity.Attributes&quot;, &quot;main.uri&quot;)
+      enricher.targetValue: 
+        $brooklyn:formatString:
+        - &quot;http://%s:%s/&quot; 
+        - $brooklyn:attributeWhenReady(&quot;host.subnet.hostname&quot;)
+        - $brooklyn:config(&quot;my.app.port&quot;)
+
+location:
+  jclouds:aws-ec2:
+    region:       eu-central-1
+    # edit these (or delete if credentials specified in brooklyn.properties)      
+    identity:     &lt;REPLACE&gt;
+    credential:   &lt;REPLACE&gt;
+  
+</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>TEMPLATE</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Application</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

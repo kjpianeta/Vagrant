@@ -1,0 +1,275 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.nosql.mongodb.MongoDBServerImpl</type>
+  <id>t5c0jNu7</id>
+  <displayName>MongoDBServer:t5c0</displayName>
+  <parent>UB1W9QNi</parent>
+  <config>
+    <mongodb.replicaset>
+      <entityProxy>UB1W9QNi</entityProxy>
+    </mongodb.replicaset>
+    <cluster.member.id type="int">1</cluster.member.id>
+    <onbox.base.dir>/home/vagrant/brooklyn-managed-processes</onbox.base.dir>
+    <onbox.base.dir.resolved type="boolean">true</onbox.base.dir.resolved>
+    <install.unique__label>MongoDBServer_2.6.5</install.unique__label>
+  </config>
+  <locations>
+    <string>qpl0SMeT</string>
+    <string>g5Z4BTCM</string>
+  </locations>
+  <attributes>
+    <service.notUp.indicators>
+      <MutableMap>
+        <service.process.isRunning>The software process for this entity does not appear to be running</service.process.isRunning>
+      </MutableMap>
+    </service.notUp.indicators>
+    <service.isUp type="boolean">false</service.isUp>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468890200566</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+    <cluster.member type="boolean">true</cluster.member>
+    <cluster.entity>
+      <entityProxy reference="../../../config/mongodb.replicaset/entityProxy"/>
+    </cluster.entity>
+    <cluster.first type="boolean">false</cluster.first>
+    <cluster.first.entity>
+      <entityProxy>AuOQFrZT</entityProxy>
+    </cluster.first.entity>
+    <softwareservice.provisioningLocation>
+      <locationProxy>qpl0SMeT</locationProxy>
+    </softwareservice.provisioningLocation>
+    <host.subnet.hostname>10.10.10.101</host.subnet.hostname>
+    <host.subnet.address>10.10.10.101</host.subnet.address>
+    <host.name>10.10.10.101</host.name>
+    <host.address>10.10.10.101</host.address>
+    <host.sshAddress>
+      <org.apache.brooklyn.util.net.UserAndHostAndPort>
+        <user>vagrant</user>
+        <hostAndPort>
+          <host>10.10.10.101</host>
+          <port>22</port>
+          <hasBracketlessColons>false</hasBracketlessColons>
+        </hostAndPort>
+      </org.apache.brooklyn.util.net.UserAndHostAndPort>
+    </host.sshAddress>
+    <install.dir>/home/vagrant/brooklyn-managed-processes/installs/MongoDBServer_2.6.5</install.dir>
+    <run.dir>/home/vagrant/brooklyn-managed-processes/apps/i5vAK6XU/entities/MongoDBServer_t5c0jNu7</run.dir>
+    <download.url>http://fastdl.mongodb.org/${driver.osDir}/${driver.osTag}-${version}.tgz</download.url>
+    <mongodb.authentication.database>admin</mongodb.authentication.database>
+    <mongodb.root.username>superuser</mongodb.root.username>
+    <mongodb.server.httpPort type="int">28017</mongodb.server.httpPort>
+    <mongodb.server.port type="int">27017</mongodb.server.port>
+    <expandedinstall.dir>/home/vagrant/brooklyn-managed-processes/installs/MongoDBServer_2.6.5/mongodb-linux-x86_64-2.6.5</expandedinstall.dir>
+    <mongodb.server.endpoint>10.10.10.101:27017</mongodb.server.endpoint>
+    <mongodb.server.http__interface>http://10.10.10.101:28017</mongodb.server.http__interface>
+    <service.process.isRunning type="boolean">false</service.process.isRunning>
+    <service.notUp.diagnostics>
+      <MutableMap>
+        <sshable>The machine for this entity does not appear to be sshable</sshable>
+        <service.process.isRunning>The software process for this entity does not appear to be running</service.process.isRunning>
+      </MutableMap>
+    </service.notUp.diagnostics>
+    <mongodb.server.replicaSet.memberStatus type="org.apache.brooklyn.entity.nosql.mongodb.ReplicaSetMemberStatus">UNKNOWN</mongodb.server.replicaSet.memberStatus>
+    <mongodb.server.uptime type="double">1298.0</mongodb.server.uptime>
+    <mongodb.server.opcounters.insert type="long">1</mongodb.server.opcounters.insert>
+    <mongodb.server.opcounters.query type="long">1339</mongodb.server.opcounters.query>
+    <mongodb.server.opcounters.update type="long">0</mongodb.server.opcounters.update>
+    <mongodb.server.opcounters.delete type="long">0</mongodb.server.opcounters.delete>
+    <mongodb.server.opcounters.getmore type="long">0</mongodb.server.opcounters.getmore>
+    <mongodb.server.opcounters.command type="long">14937</mongodb.server.opcounters.command>
+    <mongodb.server.network.bytesIn type="long">888233</mongodb.server.network.bytesIn>
+    <mongodb.server.network.bytesOut type="long">7047943</mongodb.server.network.bytesOut>
+    <mongodb.server.network.numRequests type="long">14935</mongodb.server.network.numRequests>
+    <mongodb.server.replicaSet.isPrimary type="boolean">false</mongodb.server.replicaSet.isPrimary>
+    <mongodb.server.replicaSet.isSecondary type="boolean">false</mongodb.server.replicaSet.isSecondary>
+    <mongodb.server.replicaSet.primary.endpoint>
+      <null/>
+    </mongodb.server.replicaSet.primary.endpoint>
+  </attributes>
+  <enrichers>
+    <string>vyd88OiK</string>
+    <string>N1A67YUh</string>
+    <string>Z3AaDIGM</string>
+    <string>g80MtMVO</string>
+  </enrichers>
+  <configKeys>
+    <cluster.member.id>
+      <configKey>
+        <name>cluster.member.id</name>
+        <type>java.lang.Integer</type>
+        <description>The unique ID number (sequential) of a member of a cluster</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </cluster.member.id>
+    <onbox.base.dir>
+      <configKey>
+        <name>onbox.base.dir</name>
+        <type>java.lang.String</type>
+        <description>Default base directory on target machines where Brooklyn config data is stored; default depends on the location, either ~/brooklyn-managed-processes or /tmp/brooklyn-${username} on localhost</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir>
+    <onbox.base.dir.resolved>
+      <configKey>
+        <name>onbox.base.dir.resolved</name>
+        <type>java.lang.Boolean</type>
+        <description>Whether the on-box base directory has been resolved (for internal use)</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir.resolved>
+  </configKeys>
+  <attributeKeys>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+    <cluster.member>
+      <attributeSensor>
+        <type>java.lang.Boolean</type>
+        <name>cluster.member</name>
+        <description>Set on an entity if it is a member of a cluster</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </cluster.member>
+    <cluster.entity>
+      <attributeSensor>
+        <type>org.apache.brooklyn.api.entity.Entity</type>
+        <name>cluster.entity</name>
+        <description>The cluster an entity is a member of</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </cluster.entity>
+    <cluster.first>
+      <attributeSensor>
+        <type>java.lang.Boolean</type>
+        <name>cluster.first</name>
+        <description>Set on an entity if it is the first member of a cluster</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </cluster.first>
+    <cluster.first.entity>
+      <attributeSensor>
+        <type>org.apache.brooklyn.api.entity.Entity</type>
+        <name>cluster.first.entity</name>
+        <description>The first member of the cluster</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </cluster.first.entity>
+    <host.sshAddress>
+      <attributeSensor>
+        <type>org.apache.brooklyn.util.net.UserAndHostAndPort</type>
+        <name>host.sshAddress</name>
+        <description>user@host:port for ssh&apos;ing (or null if inappropriate)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </host.sshAddress>
+    <service.notUp.diagnostics>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.diagnostics</name>
+        <description>A map of namespaced diagnostics, from when the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.diagnostics>
+  </attributeKeys>
+  <effectors>
+    <effector>
+      <name>stop</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>stopProcessMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the process with regard to the entity state. ALWAYS will try to stop the process even if the entity is marked as stopped, IF_NOT_STOPPED stops the process only if the entity is not marked as stopped, NEVER doesn&apos;t stop the process.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+        <parameter>
+          <name>stopMachineMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the machine with regard to the entity state. ALWAYS will try to stop the machine even if the entity is marked as stopped, IF_NOT_STOPPED stops the machine only if the entity is not marked as stopped, NEVER doesn&apos;t stop the machine.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Stop the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StopEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks">
+            <machineInitTasks/>
+          </outer-class>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>restart</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>restartChildren</name>
+          <type>java.lang.Boolean</type>
+          <description>Whether to restart children; default false</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="boolean">false</defaultValue>
+        </parameter>
+        <parameter>
+          <name>restartMachine</name>
+          <type>java.lang.Object</type>
+          <description>Whether to restart/replace the machine provisioned for this entity:  &apos;true&apos;, &apos;false&apos;, or &apos;auto&apos; are supported, with the default being &apos;auto&apos; which means to restart or reprovision the machine if there is no simpler way known to restart the entity (for example, if the machine is unhealthy, it would not be possible to restart the process, not even via a stop-then-start sequence); if the machine was not provisioned for this entity, this parameter has no effect</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="string">auto</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Restart the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$RestartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>start</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>locations</name>
+          <type>java.lang.Object</type>
+          <description>The location or locations to start in, as a string, a location object, a list of strings, or a list of location objects</description>
+        </parameter>
+      </parameters>
+      <description>Start the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+  </effectors>
+</entity>

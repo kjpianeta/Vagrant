@@ -1,0 +1,71 @@
+<location>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.location.byon.FixedListMachineProvisioningLocation</type>
+  <id>H1Lk1eAO</id>
+  <displayName>FixedListMachineProvisioningLocation:H1Lk</displayName>
+  <children>
+    <string>q9MAZnxU</string>
+    <string>bWCZl6ZX</string>
+    <string>V5xbcGjO</string>
+    <string>n6NiGqHc</string>
+  </children>
+  <locationConfig>
+    <user>vagrant</user>
+    <password>vagrant</password>
+    <provider>byon</provider>
+    <byon.machineSpecs>
+      <null/>
+    </byon.machineSpecs>
+    <spec.final>byon</spec.final>
+    <spec.original>byon</spec.original>
+    <machines>
+      <set>
+        <locationProxy>q9MAZnxU</locationProxy>
+        <locationProxy>bWCZl6ZX</locationProxy>
+        <locationProxy>V5xbcGjO</locationProxy>
+        <locationProxy>n6NiGqHc</locationProxy>
+      </set>
+    </machines>
+    <inUse>
+      <set>
+        <locationProxy reference="../../../machines/set/locationProxy"/>
+        <locationProxy reference="../../../machines/set/locationProxy[2]"/>
+      </set>
+    </inUse>
+    <pendingRemoval>
+      <set/>
+    </pendingRemoval>
+    <origConfigs>
+      <map>
+        <entry>
+          <locationProxy reference="../../../../machines/set/locationProxy"/>
+          <java.util.Collections_-UnmodifiableMap>
+            <m class="MutableMap">
+              <address>10.10.10.101</address>
+              <user>vagrant</user>
+              <brooklyn.internal.location.createUnmanaged type="boolean">false</brooklyn.internal.location.createUnmanaged>
+            </m>
+          </java.util.Collections_-UnmodifiableMap>
+        </entry>
+        <entry>
+          <locationProxy reference="../../../../machines/set/locationProxy[2]"/>
+          <java.util.Collections_-UnmodifiableMap>
+            <m class="MutableMap">
+              <address>10.10.10.102</address>
+              <user>vagrant</user>
+              <brooklyn.internal.location.createUnmanaged type="boolean">false</brooklyn.internal.location.createUnmanaged>
+            </m>
+          </java.util.Collections_-UnmodifiableMap>
+        </entry>
+      </map>
+    </origConfigs>
+    <tags>
+      <set/>
+    </tags>
+  </locationConfig>
+  <locationConfigUnused>
+    <string>user</string>
+    <string>password</string>
+    <string>provider</string>
+  </locationConfigUnused>
+</location>

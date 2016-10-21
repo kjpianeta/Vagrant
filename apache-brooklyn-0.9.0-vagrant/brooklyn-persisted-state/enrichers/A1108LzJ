@@ -1,0 +1,34 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.enricher.stock.Aggregator</type>
+  <id>A1108LzJ</id>
+  <displayName>org.apache.brooklyn.enricher.stock.Aggregator</displayName>
+  <config>
+    <enricher.transformation.untyped>average</enricher.transformation.untyped>
+    <enricher.sourceSensor>
+      <org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent_-DslSensorSupplier>
+        <component>
+          <componentId></componentId>
+          <scope>THIS</scope>
+        </component>
+        <sensorName>webapp.reqs.perSec.windowed</sensorName>
+      </org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent_-DslSensorSupplier>
+    </enricher.sourceSensor>
+    <enricher.targetSensor>
+      <org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent_-DslSensorSupplier>
+        <component>
+          <componentId></componentId>
+          <scope>THIS</scope>
+        </component>
+        <sensorName>webapp.reqs.perSec.perNode</sensorName>
+      </org.apache.brooklyn.camp.brooklyn.spi.dsl.methods.DslComponent_-DslSensorSupplier>
+    </enricher.targetSensor>
+    <enricher.aggregating.fromMembers type="boolean">true</enricher.aggregating.fromMembers>
+    <uniqueTag>
+      <null/>
+    </uniqueTag>
+    <tags>
+      <set/>
+    </tags>
+  </config>
+</enricher>

@@ -1,0 +1,145 @@
+#**********************************************************
+# Base Vagrant file wrapper. 
+#
+# Author: Keneth Pianeta <kpianeta@cisco.com>
+#
+#
+#**********************************************************
+# Specify minimum Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.8.1"
+VAGRANTFILE_API_VERSION = "2"
+# Update OS (Debian/RedHat based only)
+UPDATE_OS_CMD = "(sudo apt-get update && sudo apt-get -y upgrade) || (sudo yum -y update)"
+
+# Autocorrect Port Clashes
+DEFAULT_AUTOCORRECT = false
+
+# Override locale to assure guest is en_US.UTF-8
+ENV["LC_ALL"] = "en_US.UTF-8"
+
+# Require YAML module
+require 'yaml'
+
+# Read YAML file with box details
+yaml_cfg = YAML.load_file(__dir__ + '/machine_details.yaml')
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+# Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+#   # Vagrant.configure("2") do |config|
+#   # The most common configuration options are documented and commented below.
+#   # For a complete reference, please see the online documentation at
+#   # https://docs.vagrantup.com.
+
+#   yaml_cfg["servers"].each do |server|
+#     config.vm.define server["name"] do |server_config|
+#       server_config.vm.box = server["box"]
+#       server_config.vm.box_check_update = yaml_cfg["default_config"]["check_newer_vagrant_box"]
+#       if server.has_key?("ip")
+#         server_config.vm.network "private_network", ip: server["ip"]
+#       end
+
+#       if server.has_key?("forwarded_ports")
+#         server["forwarded_ports"].each do |port|
+#           if port.has_key?("autocorrect")
+#             autocorrect = true
+#           else
+#             autocorrect = DEFAULT_AUTOCORRECT
+#           end
+#           server_config.vm.network "forwarded_port", guest: port["guest"], host: port["host"], guest_ip: port["guest_ip"], autocorrect: autocorrect
+#         end
+#       end
+
+#       server_config.vm.hostname = server["name"]
+#       server_config.vm.provider :virtualbox do |vb|
+#         vb.name = server["name"]
+#         vb.memory = server["ram"]
+#         vb.cpus = server["cpus"]
+#       end
+
+#       if yaml_cfg["default_config"]["run_os_update"]
+#         server_config.vm.provision "shell", privileged: false, inline: UPDATE_OS_CMD
+#       end
+
+#       if server.has_key?("shared_folders")
+#         server["shared_folders"].each do |shared_folder|
+#           server_config.vm.synced_folder shared_folder["host"], shared_folder["guest"], mount_options: ["dmode=777,fmode=777"] ,create: true
+#         end
+#       end
+
+#       if server["shell"] && server["shell"]["cmd"]
+#         server["shell"]["cmd"].each do |cmd|
+#           server_config.vm.provision "shell", privileged: false, inline: cmd, env: server["shell"]["env"]
+#         end
+#       end
+
+#       server_config.vm.post_up_message = server["post_up_message"]
+#     end
+#   end
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "ubuntu/trusty64"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+config.vm.network "forwarded_port", guest: 8081, host: 8081
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  # config.vm.network "public_network"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+  # server_config.vm.synced_folder shared_folder["host"], shared_folder["guest"], mount_options: ["dmode=777,fmode=777"] ,create: true
+config.vm.synced_folder "/Users/kpianeta/Code/git/csm", "/opt/cisco/csm", mount_options: ["dmode=777,fmode=777"] ,create: true
+config.vm.synced_folder "/Users/kpianeta", "/home/kpianeta", mount_options: ["dmode=777,fmode=777"] ,create: true
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "2048"
+  # end
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = "2"
+  end
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
+  # such as FTP and Heroku are also available. See the documentation at
+  # https://docs.vagrantup.com/v2/push/atlas.html for more information.
+  # config.push.define "atlas" do |push|
+  #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
+  # end
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+end

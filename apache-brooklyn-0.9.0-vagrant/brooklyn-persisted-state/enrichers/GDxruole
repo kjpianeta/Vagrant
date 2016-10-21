@@ -1,0 +1,18 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic$ComputeServiceState</type>
+  <id>GDxruole</id>
+  <displayName>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic.ComputeServiceState</displayName>
+  <tags>
+    <string>service.state.actual</string>
+  </tags>
+  <uniqueTag>service.state.actual</uniqueTag>
+  <config>
+    <uniqueTag>service.state.actual</uniqueTag>
+    <tags>
+      <set>
+        <string>service.state.actual</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

@@ -1,0 +1,17 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogPolicyItemDto</type>
+  <id>org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy:0.9.0</id>
+  <displayName>Auto-scaler</displayName>
+  <catalogItemId>org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy:0.9.0</catalogItemId>
+  <description>Policy that is attached to a Resizable entity and dynamically adjusts its size in response to either keep a metric within a given range, or in response to POOL_COLD and POOL_HOT events</description>
+  <registeredTypeName>org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy</registeredTypeName>
+  <version>0.9.0</version>
+  <planYaml>brooklyn.policies: [{ type: org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>POLICY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.policy.Policy</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.policy.PolicySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

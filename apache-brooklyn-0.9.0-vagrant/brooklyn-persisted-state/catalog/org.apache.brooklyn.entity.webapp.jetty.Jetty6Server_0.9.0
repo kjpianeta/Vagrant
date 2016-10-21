@@ -1,0 +1,39 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.webapp.jetty.Jetty6Server:0.9.0</id>
+  <displayName>Jetty6 Server</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.jetty.Jetty6Server:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.webapp.JavaWebAppSoftwareProcess</string>
+        <string>org.apache.brooklyn.entity.software.base.SoftwareProcess</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.entity.webapp.JavaWebAppService</string>
+        <string>org.apache.brooklyn.entity.webapp.WebAppService</string>
+        <string>org.apache.brooklyn.entity.webapp.WebAppServiceConstants</string>
+        <string>org.apache.brooklyn.entity.webapp.WebAppServiceMetrics</string>
+        <string>org.apache.brooklyn.entity.java.UsesJava</string>
+        <string>org.apache.brooklyn.entity.webapp.JavaWebAppService$CanDeployAndUndeploy</string>
+        <string>org.apache.brooklyn.entity.java.UsesJmx</string>
+        <string>org.apache.brooklyn.api.objs.HasShortName</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>Old version (v6 @ Mortbay) of the popular Jetty webapp container</description>
+  <registeredTypeName>org.apache.brooklyn.entity.webapp.jetty.Jetty6Server</registeredTypeName>
+  <iconUrl>classpath:///jetty-logo.png</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.webapp.jetty.Jetty6Server }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

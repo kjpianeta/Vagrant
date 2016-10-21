@@ -1,0 +1,177 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.stock.BasicApplicationImpl</type>
+  <id>Ha4plERs</id>
+  <displayName>Tomcat Cluster</displayName>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+      <kind>yaml_spec</kind>
+      <contents>name: Tomcat Cluster
+
+location:
+  byon:
+    user: vagrant
+    password: vagrant
+    hosts:
+      - 10.10.10.101
+      - 10.10.10.102
+      - 10.10.10.103
+      - 10.10.10.104
+ 
+services:
+- type: org.apache.brooklyn.entity.group.DynamicCluster
+  name: Cluster
+  id: cluster
+  brooklyn.config:
+    initialSize: 1
+    memberSpec:
+      $brooklyn:entitySpec:
+        type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
+        name: Tomcat Server
+        brooklyn.config:
+          wars.root: http://search.maven.org/remotecontent?filepath=org/apache/brooklyn/example/brooklyn-example-hello-world-webapp/0.8.0-incubating/brooklyn-example-hello-world-webapp-0.8.0-incubating.war
+ 
+        brooklyn.policies:
+        - type: org.apache.brooklyn.policy.ha.ServiceRestarter
+          brooklyn.config:
+            failOnRecurringFailuresInThisDuration: 5m
+        brooklyn.enrichers:
+        - type: org.apache.brooklyn.policy.ha.ServiceFailureDetector
+          brooklyn.config:
+            entityFailed.stabilizationDelay: 30s
+ 
+  brooklyn.policies:
+  - type: org.apache.brooklyn.policy.ha.ServiceReplacer
+ 
+  - type: org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy
+    brooklyn.config:
+      metric: webapp.reqs.perSec.perNode
+      metricUpperBound: 3
+      metricLowerBound: 1
+      resizeUpStabilizationDelay: 2s
+      resizeDownStabilizationDelay: 1m
+      maxPoolSize: 3
+
+  brooklyn.enrichers:
+  - type: org.apache.brooklyn.enricher.stock.Aggregator
+    brooklyn.config:
+      enricher.sourceSensor: $brooklyn:sensor(&quot;webapp.reqs.perSec.windowed&quot;)
+      enricher.targetSensor: $brooklyn:sensor(&quot;webapp.reqs.perSec.perNode&quot;)
+      enricher.aggregating.fromMembers: true
+      transformation: average
+
+- type: org.apache.brooklyn.entity.proxy.nginx.NginxController
+  name: Load Balancer (nginx)
+  brooklyn.config:
+    loadbalancer.serverpool: $brooklyn:entity(&quot;cluster&quot;)
+    nginx.sticky: false</contents>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+  </tags>
+  <children>
+    <string>rKx01txb</string>
+    <string>AxYsMVA4</string>
+  </children>
+  <config>
+    <camp.template.id>z4mcCrX7</camp.template.id>
+    <brooklyn.wrapper__app type="boolean">true</brooklyn.wrapper__app>
+  </config>
+  <locations>
+    <string>H1Lk1eAO</string>
+  </locations>
+  <attributes>
+    <service.notUp.indicators>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">None of the entities are up</entry>
+      </MutableMap>
+    </service.notUp.indicators>
+    <service.problems>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">Required entities not healthy: DynamicClusterImpl{id=rKx01txb}, NginxControllerImpl{id=AxYsMVA4}</entry>
+      </MutableMap>
+    </service.problems>
+    <service.isUp type="boolean">false</service.isUp>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468888696883</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+  </attributes>
+  <enrichers>
+    <string>C5UFCoNy</string>
+    <string>WrLFCiFW</string>
+    <string>Er5wB0T8</string>
+  </enrichers>
+  <configKeys>
+    <camp.template.id>
+      <configKey>
+        <name>camp.template.id</name>
+        <type>java.lang.String</type>
+        <description>UID of the component in the CAMP template from which this entity was created</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.template.id>
+    <brooklyn.wrapper__app>
+      <configKey>
+        <name>brooklyn.wrapper_app</name>
+        <type>java.lang.Boolean</type>
+        <description>brooklyn.wrapper_app</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </brooklyn.wrapper__app>
+  </configKeys>
+  <attributeKeys>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+    <service.problems>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.problems</name>
+        <description>A map of namespaced indicators of problems with a service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.problems>
+    <service.state.expected>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle$Transition</type>
+        <name>service.state.expected</name>
+        <description>Last controlled change to service state, indicating what the expected state should be</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state.expected>
+    <service.state>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle</type>
+        <name>service.state</name>
+        <description>Actual lifecycle state of the service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state>
+  </attributeKeys>
+</entity>

@@ -1,0 +1,162 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.nosql.mongodb.MongoDBReplicaSetImpl</type>
+  <id>UB1W9QNi</id>
+  <displayName>MongoDB Replica Set</displayName>
+  <parent>i5vAK6XU</parent>
+  <children>
+    <string>kZm3OdvX</string>
+    <string>AuOQFrZT</string>
+    <string>t5c0jNu7</string>
+    <string>CfDBjaga</string>
+  </children>
+  <config>
+    <camp.template.id>PlZeXjcI</camp.template.id>
+    <cluster.initial.size type="int">3</cluster.initial.size>
+    <dynamiccluster.memberspec>
+      <org.apache.brooklyn.api.entity.EntitySpec>
+        <type>org.apache.brooklyn.entity.nosql.mongodb.MongoDBServer</type>
+        <tags class="MutableSet"/>
+        <parameters class="ImmutableList"/>
+        <flags/>
+        <config/>
+        <policies/>
+        <policySpecs/>
+        <enrichers/>
+        <enricherSpecs/>
+        <locations/>
+        <locationSpecs/>
+        <additionalInterfaces/>
+        <entityInitializers/>
+        <children/>
+        <members/>
+        <groups/>
+        <immutable>false</immutable>
+      </org.apache.brooklyn.api.entity.EntitySpec>
+    </dynamiccluster.memberspec>
+  </config>
+  <members>
+    <string>AuOQFrZT</string>
+    <string>t5c0jNu7</string>
+    <string>CfDBjaga</string>
+  </members>
+  <attributes>
+    <service.isUp type="boolean">false</service.isUp>
+    <group.members.count type="int">3</group.members.count>
+    <group.members>
+      <com.google.common.collect.RegularImmutableSet>
+        <entityProxy>AuOQFrZT</entityProxy>
+        <entityProxy>t5c0jNu7</entityProxy>
+        <entityProxy>CfDBjaga</entityProxy>
+      </com.google.common.collect.RegularImmutableSet>
+    </group.members>
+    <next.cluster.member.id>
+      <org.apache.brooklyn.entity.group.DynamicClusterImpl_-NextClusterMemberIdSupplier>
+        <nextId>
+          <value>3</value>
+        </nextId>
+      </org.apache.brooklyn.entity.group.DynamicClusterImpl_-NextClusterMemberIdSupplier>
+    </next.cluster.member.id>
+    <cluster.one__and__all.members.up type="boolean">false</cluster.one__and__all.members.up>
+    <mongodb.root.username>superuser</mongodb.root.username>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>STARTING</state>
+        <timestampUtc>1468890127888</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">STARTING</service.state>
+    <service.problems>
+      <MutableMap>
+        <entry key="service-lifecycle-indicators-from-children-and-members">Required entities not healthy: MongoDBServerImpl{id=AuOQFrZT, hostname=10.10.10.102, port=27017}, MongoDBServerImpl{id=t5c0jNu7, hostname=10.10.10.101, port=27017}</entry>
+      </MutableMap>
+    </service.problems>
+    <dynamiccluster.quarantineGroup>
+      <entityProxy>kZm3OdvX</entityProxy>
+    </dynamiccluster.quarantineGroup>
+    <cluster.first.entity>
+      <entityProxy reference="../../group.members/com.google.common.collect.RegularImmutableSet/entityProxy"/>
+    </cluster.first.entity>
+    <service.notUp.indicators>
+      <MutableMap>
+        <entry key="service-not-up-indicators-from-children-and-members">2 entities are not up, including MongoDBServerImpl{id=AuOQFrZT, hostname=10.10.10.102, port=27017}</entry>
+      </MutableMap>
+    </service.notUp.indicators>
+  </attributes>
+  <enrichers>
+    <string>AMCz0daP</string>
+    <string>H39on9DA</string>
+    <string>QD6rgQ45</string>
+    <string>UUDMV6Fs</string>
+    <string>bCSA4lrS</string>
+  </enrichers>
+  <configKeys>
+    <camp.template.id>
+      <configKey>
+        <name>camp.template.id</name>
+        <type>java.lang.String</type>
+        <description>UID of the component in the CAMP template from which this entity was created</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.template.id>
+  </configKeys>
+  <attributeKeys>
+    <next.cluster.member.id>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.Integer</java-class>
+            </argumentsList>
+            <rawType>com.google.common.base.Supplier</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>next.cluster.member.id</name>
+        <description>Returns the ID number of the next member to be added</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </next.cluster.member.id>
+    <service.state.expected>
+      <attributeSensor>
+        <type>org.apache.brooklyn.core.entity.lifecycle.Lifecycle$Transition</type>
+        <name>service.state.expected</name>
+        <description>Last controlled change to service state, indicating what the expected state should be</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.state.expected>
+    <service.problems>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.problems</name>
+        <description>A map of namespaced indicators of problems with a service</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.problems>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+  </attributeKeys>
+</entity>

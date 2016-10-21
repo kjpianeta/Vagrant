@@ -1,0 +1,19 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.software.base.SoftwareProcessImpl$UpdatingNotUpFromServiceProcessIsRunning</type>
+  <id>wyK0sYdq</id>
+  <displayName>org.apache.brooklyn.entity.software.base.SoftwareProcessImpl.UpdatingNotUpFromServiceProcessIsRunning</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <string>service-process-is-running-updating-not-up</string>
+  </tags>
+  <uniqueTag>service-process-is-running-updating-not-up</uniqueTag>
+  <config>
+    <uniqueTag>service-process-is-running-updating-not-up</uniqueTag>
+    <tags>
+      <set>
+        <string>service-process-is-running-updating-not-up</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

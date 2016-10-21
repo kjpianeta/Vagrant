@@ -1,0 +1,60 @@
+<location>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.location.byon.FixedListMachineProvisioningLocation</type>
+  <id>oAD07Zbs</id>
+  <displayName>FixedListMachineProvisioningLocation:oAD0</displayName>
+  <children>
+    <string>l1TyfHOK</string>
+    <string>J9htZXHo</string>
+    <string>BqA2BCRv</string>
+    <string>t3yo17W3</string>
+  </children>
+  <locationConfig>
+    <user>vagrant</user>
+    <password>vagrant</password>
+    <provider>byon</provider>
+    <byon.machineSpecs>
+      <null/>
+    </byon.machineSpecs>
+    <spec.final>byon</spec.final>
+    <spec.original>byon</spec.original>
+    <machines>
+      <set>
+        <locationProxy>l1TyfHOK</locationProxy>
+        <locationProxy>J9htZXHo</locationProxy>
+        <locationProxy>BqA2BCRv</locationProxy>
+        <locationProxy>t3yo17W3</locationProxy>
+      </set>
+    </machines>
+    <inUse>
+      <set>
+        <locationProxy reference="../../../machines/set/locationProxy"/>
+      </set>
+    </inUse>
+    <pendingRemoval>
+      <set/>
+    </pendingRemoval>
+    <origConfigs>
+      <map>
+        <entry>
+          <locationProxy reference="../../../../machines/set/locationProxy"/>
+          <java.util.Collections_-UnmodifiableMap>
+            <m class="MutableMap">
+              <address>10.10.10.101</address>
+              <user>vagrant</user>
+              <brooklyn.internal.location.createUnmanaged type="boolean">false</brooklyn.internal.location.createUnmanaged>
+            </m>
+          </java.util.Collections_-UnmodifiableMap>
+        </entry>
+      </map>
+    </origConfigs>
+    <tags>
+      <set/>
+    </tags>
+  </locationConfig>
+  <locationConfigUnused>
+    <string>user</string>
+    <string>password</string>
+    <string>provider</string>
+  </locationConfigUnused>
+</location>

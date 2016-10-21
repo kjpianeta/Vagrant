@@ -1,0 +1,412 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.webapp.tomcat.TomcatServerImpl</type>
+  <id>HvBvyqA3</id>
+  <displayName>tomcatServer</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+      <kind>yaml_spec</kind>
+      <contents>services: [{ type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer }]</contents>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-NamedStringTag>
+  </tags>
+  <parent>E7qiFavE</parent>
+  <config>
+    <camp.template.id>j0k7vAdo</camp.template.id>
+    <onbox.base.dir>/home/vagrant/brooklyn-managed-processes</onbox.base.dir>
+    <onbox.base.dir.resolved type="boolean">true</onbox.base.dir.resolved>
+    <install.unique__label>TomcatServer_7.0.65</install.unique__label>
+    <jmx.agent.mode type="org.apache.brooklyn.entity.java.UsesJmx$JmxAgentModes">JMXMP_AND_RMI</jmx.agent.mode>
+  </config>
+  <locations>
+    <string>l1TyfHOK</string>
+  </locations>
+  <attributes>
+    <service.notUp.indicators>
+      <MutableMap>
+        <service.process.isRunning>The software process for this entity does not appear to be running</service.process.isRunning>
+      </MutableMap>
+    </service.notUp.indicators>
+    <service.notUp.diagnostics>
+      <MutableMap>
+        <sshable>The machine for this entity does not appear to be sshable</sshable>
+      </MutableMap>
+    </service.notUp.diagnostics>
+    <service.isUp type="boolean">false</service.isUp>
+    <service.state.expected>
+      <org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+        <state>RUNNING</state>
+        <timestampUtc>1468890126124</timestampUtc>
+      </org.apache.brooklyn.core.entity.lifecycle.Lifecycle_-Transition>
+    </service.state.expected>
+    <service.state type="org.apache.brooklyn.core.entity.lifecycle.Lifecycle">ON_FIRE</service.state>
+    <softwareservice.provisioningLocation>
+      <locationProxy>oAD07Zbs</locationProxy>
+    </softwareservice.provisioningLocation>
+    <host.subnet.hostname>10.10.10.101</host.subnet.hostname>
+    <host.subnet.address>10.10.10.101</host.subnet.address>
+    <host.name>10.10.10.101</host.name>
+    <host.address>10.10.10.101</host.address>
+    <host.sshAddress>
+      <org.apache.brooklyn.util.net.UserAndHostAndPort>
+        <user>vagrant</user>
+        <hostAndPort>
+          <host>10.10.10.101</host>
+          <port>22</port>
+          <hasBracketlessColons>false</hasBracketlessColons>
+        </hostAndPort>
+      </org.apache.brooklyn.util.net.UserAndHostAndPort>
+    </host.sshAddress>
+    <install.dir>/home/vagrant/brooklyn-managed-processes/installs/TomcatServer_7.0.65</install.dir>
+    <run.dir>/home/vagrant/brooklyn-managed-processes/apps/E7qiFavE/entities/TomcatServer_HvBvyqA3</run.dir>
+    <log.location>/home/vagrant/brooklyn-managed-processes/apps/E7qiFavE/entities/TomcatServer_HvBvyqA3/logs/catalina.out</log.location>
+    <download.url>http://download.nextag.com/apache/tomcat/tomcat-7/v${version}/bin/apache-tomcat-${version}.tar.gz</download.url>
+    <http.port type="int">8080</http.port>
+    <webapp.enabledProtocols>
+      <com.google.common.collect.SingletonImmutableSet>
+        <string>http</string>
+      </com.google.common.collect.SingletonImmutableSet>
+    </webapp.enabledProtocols>
+    <https.port type="int">8443</https.port>
+    <jmx.context>jmxrmi</jmx.context>
+    <tomcat.shutdownport type="int">31880</tomcat.shutdownport>
+    <jmx.direct.port type="int">31001</jmx.direct.port>
+    <rmi.registry.port type="int">1099</rmi.registry.port>
+    <expandedinstall.dir>/home/vagrant/brooklyn-managed-processes/installs/TomcatServer_7.0.65/apache-tomcat-7.0.65</expandedinstall.dir>
+    <jmx.agent.local.path>/home/vagrant/brooklyn-managed-processes/apps/E7qiFavE/entities/TomcatServer_HvBvyqA3/brooklyn-jmxmp-agent-shaded-0.9.0.jar</jmx.agent.local.path>
+    <webapp.deployedWars>
+      <set/>
+    </webapp.deployedWars>
+    <main.uri>
+      <uri>http://10.10.10.101:8080/</uri>
+    </main.uri>
+    <webapp.url>http://10.10.10.101:8080/</webapp.url>
+    <jmx.service.url>service:jmx:jmxmp://10.10.10.101:31001</jmx.service.url>
+    <java.metrics.heap.used type="long">33346552</java.metrics.heap.used>
+    <java.metrics.heap.init type="long">209715200</java.metrics.heap.init>
+    <java.metrics.heap.max type="long">810942464</java.metrics.heap.max>
+    <java.metrics.heap.committed type="long">202899456</java.metrics.heap.committed>
+    <java.metrics.nonheap.used type="long">15480016</java.metrics.nonheap.used>
+    <java.metrics.uptime type="long">1321501</java.metrics.uptime>
+    <java.metrics.physicalmemory.total type="long">512471040</java.metrics.physicalmemory.total>
+    <webapp.tomcat.connectorStatus>STARTED</webapp.tomcat.connectorStatus>
+    <service.process.isRunning type="boolean">false</service.process.isRunning>
+    <webapp.reqs.total type="int">0</webapp.reqs.total>
+    <webapp.reqs.errors type="int">0</webapp.reqs.errors>
+    <webapp.reqs.processingTime.total type="int">0</webapp.reqs.processingTime.total>
+    <java.metrics.processors.available type="int">2</java.metrics.processors.available>
+    <java.metrics.threads.max type="int">32</java.metrics.threads.max>
+    <java.metrics.processCpuTime.total type="double">16880.0</java.metrics.processCpuTime.total>
+    <java.metrics.threads.current type="int">31</java.metrics.threads.current>
+    <java.metrics.starttime type="long">1468890121440</java.metrics.starttime>
+    <java.metrics.systemload.average type="double">0.01</java.metrics.systemload.average>
+    <java.metrics.physicalmemory.free type="long">61485056</java.metrics.physicalmemory.free>
+    <webapp.reqs.processingTime.fraction.last type="double">0.0</webapp.reqs.processingTime.fraction.last>
+    <webapp.reqs.perSec.last type="double">0.0</webapp.reqs.perSec.last>
+    <java.metrics.processCpuTime.fraction.last type="double">0.007997600719784064</java.metrics.processCpuTime.fraction.last>
+    <webapp.reqs.processingTime.fraction.windowed type="double">0.0</webapp.reqs.processingTime.fraction.windowed>
+    <webapp.reqs.perSec.windowed type="double">0.0</webapp.reqs.perSec.windowed>
+    <java.metrics.processCpuTime.fraction.windowed type="double">0.007997600719784064</java.metrics.processCpuTime.fraction.windowed>
+  </attributes>
+  <enrichers>
+    <string>YRQqn7ub</string>
+    <string>pvf3GkI1</string>
+    <string>q4Jddp9l</string>
+    <string>uDdUPZd3</string>
+    <string>LTYPKmHi</string>
+    <string>G55MjvmQ</string>
+    <string>wGfUVvSc</string>
+    <string>O5V4xV1X</string>
+    <string>pAReTggk</string>
+    <string>nxRiyoPA</string>
+  </enrichers>
+  <configKeys>
+    <camp.template.id>
+      <configKey>
+        <name>camp.template.id</name>
+        <type>java.lang.String</type>
+        <description>UID of the component in the CAMP template from which this entity was created</description>
+        <reconfigurable>false</reconfigurable>
+        <inheritance class="org.apache.brooklyn.config.ConfigInheritance$None"/>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </camp.template.id>
+    <onbox.base.dir>
+      <configKey>
+        <name>onbox.base.dir</name>
+        <type>java.lang.String</type>
+        <description>Default base directory on target machines where Brooklyn config data is stored; default depends on the location, either ~/brooklyn-managed-processes or /tmp/brooklyn-${username} on localhost</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir>
+    <onbox.base.dir.resolved>
+      <configKey>
+        <name>onbox.base.dir.resolved</name>
+        <type>java.lang.Boolean</type>
+        <description>Whether the on-box base directory has been resolved (for internal use)</description>
+        <reconfigurable>false</reconfigurable>
+        <constraint class="com.google.common.base.Predicates$ObjectPredicate">ALWAYS_TRUE</constraint>
+      </configKey>
+    </onbox.base.dir.resolved>
+  </configKeys>
+  <attributeKeys>
+    <service.notUp.indicators>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.indicators</name>
+        <description>A map of namespaced indicators that the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.indicators>
+    <service.notUp.diagnostics>
+      <attributeSensor>
+        <typeToken class="com.google.common.reflect.TypeToken$SimpleTypeToken">
+          <runtimeType class="com.google.common.reflect.Types$ParameterizedTypeImpl">
+            <argumentsList>
+              <java-class>java.lang.String</java-class>
+              <java-class>java.lang.Object</java-class>
+            </argumentsList>
+            <rawType>java.util.Map</rawType>
+          </runtimeType>
+        </typeToken>
+        <name>service.notUp.diagnostics</name>
+        <description>A map of namespaced diagnostics, from when the service is not up</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </service.notUp.diagnostics>
+    <host.sshAddress>
+      <attributeSensor>
+        <type>org.apache.brooklyn.util.net.UserAndHostAndPort</type>
+        <name>host.sshAddress</name>
+        <description>user@host:port for ssh&apos;ing (or null if inappropriate)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </host.sshAddress>
+    <log.location>
+      <attributeSensor>
+        <type>java.lang.String</type>
+        <name>log.location</name>
+        <description>Log file location</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </log.location>
+    <main.uri>
+      <attributeSensor>
+        <type>java.net.URI</type>
+        <name>main.uri</name>
+        <description>Main URI for contacting the service/endpoint offered by this entity</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </main.uri>
+    <java.metrics.heap.used>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.heap.used</name>
+        <description>Current heap size (bytes)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.heap.used>
+    <java.metrics.heap.init>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.heap.init</name>
+        <description>Initial heap size (bytes)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.heap.init>
+    <java.metrics.heap.max>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.heap.max</name>
+        <description>Max heap size (bytes)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.heap.max>
+    <java.metrics.heap.committed>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.heap.committed</name>
+        <description>Commited heap size (bytes)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.heap.committed>
+    <java.metrics.nonheap.used>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.nonheap.used</name>
+        <description>Current non-heap size (bytes)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.nonheap.used>
+    <java.metrics.uptime>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.uptime</name>
+        <description>Uptime of Java process (millis, elapsed since start)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.uptime>
+    <java.metrics.physicalmemory.total>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.physicalmemory.total</name>
+        <description>The physical memory available to the operating system</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.physicalmemory.total>
+    <java.metrics.processors.available>
+      <attributeSensor>
+        <type>java.lang.Integer</type>
+        <name>java.metrics.processors.available</name>
+        <description>number of processors available to the Java virtual machine</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.processors.available>
+    <java.metrics.threads.max>
+      <attributeSensor>
+        <type>java.lang.Integer</type>
+        <name>java.metrics.threads.max</name>
+        <description>Peak number of threads</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.threads.max>
+    <java.metrics.processCpuTime.total>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>java.metrics.processCpuTime.total</name>
+        <description>Process CPU time (total millis since start)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.processCpuTime.total>
+    <java.metrics.threads.current>
+      <attributeSensor>
+        <type>java.lang.Integer</type>
+        <name>java.metrics.threads.current</name>
+        <description>Current number of threads</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.threads.current>
+    <java.metrics.starttime>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.starttime</name>
+        <description>Start time of Java process (UTC)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.starttime>
+    <java.metrics.systemload.average>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>java.metrics.systemload.average</name>
+        <description>average system load</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.systemload.average>
+    <java.metrics.physicalmemory.free>
+      <attributeSensor>
+        <type>java.lang.Long</type>
+        <name>java.metrics.physicalmemory.free</name>
+        <description>The free memory available to the operating system</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.physicalmemory.free>
+    <java.metrics.processCpuTime.fraction.last>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>java.metrics.processCpuTime.fraction.last</name>
+        <description>Fraction of CPU time used, reported by JVM (percentage, last datapoint)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.processCpuTime.fraction.last>
+    <java.metrics.processCpuTime.fraction.windowed>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>java.metrics.processCpuTime.fraction.windowed</name>
+        <description>Fraction of CPU time used, reported by JVM (percentage, over time window)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </java.metrics.processCpuTime.fraction.windowed>
+  </attributeKeys>
+  <effectors>
+    <effector>
+      <name>restart</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>restartChildren</name>
+          <type>java.lang.Boolean</type>
+          <description>Whether to restart children; default false</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="boolean">false</defaultValue>
+        </parameter>
+        <parameter>
+          <name>restartMachine</name>
+          <type>java.lang.Object</type>
+          <description>Whether to restart/replace the machine provisioned for this entity:  &apos;true&apos;, &apos;false&apos;, or &apos;auto&apos; are supported, with the default being &apos;auto&apos; which means to restart or reprovision the machine if there is no simpler way known to restart the entity (for example, if the machine is unhealthy, it would not be possible to restart the process, not even via a stop-then-start sequence); if the machine was not provisioned for this entity, this parameter has no effect</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="string">auto</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Restart the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$RestartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks">
+            <machineInitTasks/>
+          </outer-class>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>start</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>locations</name>
+          <type>java.lang.Object</type>
+          <description>The location or locations to start in, as a string, a location object, a list of strings, or a list of location objects</description>
+        </parameter>
+      </parameters>
+      <description>Start the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StartEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+    <effector>
+      <name>stop</name>
+      <returnType>void</returnType>
+      <parameters>
+        <parameter>
+          <name>stopProcessMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the process with regard to the entity state. ALWAYS will try to stop the process even if the entity is marked as stopped, IF_NOT_STOPPED stops the process only if the entity is not marked as stopped, NEVER doesn&apos;t stop the process.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+        <parameter>
+          <name>stopMachineMode</name>
+          <type>org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode</type>
+          <description>When to stop the machine with regard to the entity state. ALWAYS will try to stop the machine even if the entity is marked as stopped, IF_NOT_STOPPED stops the machine only if the entity is not marked as stopped, NEVER doesn&apos;t stop the machine.</description>
+          <hasDefaultValue>true</hasDefaultValue>
+          <defaultValue class="org.apache.brooklyn.entity.software.base.SoftwareProcess$StopSoftwareParameters$StopMode">IF_NOT_STOPPED</defaultValue>
+        </parameter>
+      </parameters>
+      <description>Stop the process/service represented by an entity</description>
+      <body>
+        <effectorBody class="org.apache.brooklyn.entity.software.base.lifecycle.MachineLifecycleEffectorTasks$StopEffectorBody">
+          <outer-class class="org.apache.brooklyn.entity.software.base.SoftwareProcessDriverLifecycleEffectorTasks" reference="../../../../effector/body/effectorBody/outer-class"/>
+        </effectorBody>
+      </body>
+    </effector>
+  </effectors>
+</entity>

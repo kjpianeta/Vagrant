@@ -1,0 +1,36 @@
+<policy>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy</type>
+  <id>evW6xZ9Z</id>
+  <displayName>Auto-scaler</displayName>
+  <catalogItemId>org.apache.brooklyn.policy.autoscaling.AutoScalerPolicy:0.9.0</catalogItemId>
+  <config>
+    <autoscaler.metric>
+      <attributeSensor>
+        <type>java.lang.Object</type>
+        <name>webapp.reqs.perSec.perNode</name>
+        <description>webapp.reqs.perSec.perNode</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </autoscaler.metric>
+    <autoscaler.metricLowerBound type="int">1</autoscaler.metricLowerBound>
+    <autoscaler.metricUpperBound type="int">3</autoscaler.metricUpperBound>
+    <autoscaler.resizeUpStabilizationDelay>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>2000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </autoscaler.resizeUpStabilizationDelay>
+    <autoscaler.resizeDownStabilizationDelay>
+      <org.apache.brooklyn.util.time.Duration>
+        <nanos>60000000000</nanos>
+      </org.apache.brooklyn.util.time.Duration>
+    </autoscaler.resizeDownStabilizationDelay>
+    <autoscaler.maxPoolSize type="int">3</autoscaler.maxPoolSize>
+    <uniqueTag>
+      <null/>
+    </uniqueTag>
+    <tags>
+      <set/>
+    </tags>
+  </config>
+</policy>

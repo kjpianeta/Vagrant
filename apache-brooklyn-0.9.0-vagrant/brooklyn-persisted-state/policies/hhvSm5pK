@@ -1,0 +1,15 @@
+<policy>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.ha.ServiceReplacer</type>
+  <id>hhvSm5pK</id>
+  <displayName>Service Replacer</displayName>
+  <catalogItemId>org.apache.brooklyn.policy.ha.ServiceReplacer:0.9.0</catalogItemId>
+  <config>
+    <uniqueTag>
+      <null/>
+    </uniqueTag>
+    <tags>
+      <set/>
+    </tags>
+  </config>
+</policy>

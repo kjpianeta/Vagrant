@@ -1,0 +1,38 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.nosql.cassandra.CassandraDatacenter:0.9.0</id>
+  <displayName>Apache Cassandra Datacenter Cluster</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.nosql.cassandra.CassandraDatacenter:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.group.DynamicCluster</string>
+        <string>org.apache.brooklyn.entity.group.AbstractGroup</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.api.entity.Group</string>
+        <string>org.apache.brooklyn.core.entity.trait.Changeable</string>
+        <string>org.apache.brooklyn.entity.group.Cluster</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Resizable</string>
+        <string>org.apache.brooklyn.core.entity.trait.MemberReplaceable</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$HasDatastoreUrl</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$CanExecuteScript</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>Cassandra is a highly scalable, eventually consistent, distributed, structured key-value store which provides a ColumnFamily-based data model richer than typical key/value systems</description>
+  <registeredTypeName>org.apache.brooklyn.entity.nosql.cassandra.CassandraDatacenter</registeredTypeName>
+  <iconUrl>classpath:///cassandra-logo.jpeg</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.nosql.cassandra.CassandraDatacenter }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

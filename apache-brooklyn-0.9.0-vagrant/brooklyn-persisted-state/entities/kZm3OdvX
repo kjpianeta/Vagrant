@@ -1,0 +1,13 @@
+<entity>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.entity.group.QuarantineGroupImpl</type>
+  <id>kZm3OdvX</id>
+  <displayName>quarantine</displayName>
+  <parent>UB1W9QNi</parent>
+  <attributes>
+    <group.members.count type="int">0</group.members.count>
+    <group.members>
+      <ImmutableList/>
+    </group.members>
+  </attributes>
+</entity>

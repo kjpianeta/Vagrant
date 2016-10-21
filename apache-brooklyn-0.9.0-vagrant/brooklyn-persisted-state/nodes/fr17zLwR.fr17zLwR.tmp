@@ -1,0 +1,8 @@
+<org.apache.brooklyn.core.mgmt.ha.dto.BasicManagementNodeSyncRecord>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <nodeId>fr17zLwR</nodeId>
+  <uri>http://127.0.0.1:8081/</uri>
+  <status>MASTER</status>
+  <priority>0</priority>
+  <localTimestamp>1468891499241</localTimestamp>
+</org.apache.brooklyn.core.mgmt.ha.dto.BasicManagementNodeSyncRecord>

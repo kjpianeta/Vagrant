@@ -1,0 +1,132 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#**********************************************************
+# Base Vagrant file wrapper. 
+#
+# Author: Keneth Pianeta <kpianeta@cisco.com>
+#
+#
+#**********************************************************
+# Specify minimum Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.8.1"
+Vagrant.require_plugin "vagrant-reload"
+VAGRANTFILE_API_VERSION = "2"
+
+# Update OS (Debian/RedHat based only)
+UPDATE_OS_CMD = "(sudo apt-get update && sudo apt-get -y upgrade) || (sudo yum -y update && sudo yum -y upgrade)"
+
+# Autocorrect Port Clashes
+DEFAULT_AUTOCORRECT = false
+
+# Override locale to assure guest is en_US.UTF-8
+ENV["LC_ALL"] = "en_US.UTF-8"
+
+# Require YAML module
+require 'yaml'
+
+
+# Read YAML file with box details
+yaml_cfg = YAML.load_file(__dir__ + '/servers.yaml')
+
+
+# $script = <<SCRIPT
+# echo "************Starting Inline script***************"
+# sudo rpm --import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+# sudo yum update
+# sudo yum -y install kernel-devel gcc make perl && \
+# sudo yum -y clean all
+# cd /tmp && \
+# curl -O http://download.virtualbox.org/virtualbox/5.0.26/VBoxGuestAdditions_5.0.26.iso && \
+# sudo mkdir /media/VBoxGuestAdditions && \
+# sudo mount -o loop,ro VBoxGuestAdditions_5.0.26.iso /media/VBoxGuestAdditions && \
+# sudo sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
+# sudo rm VBoxGuestAdditions_5.0.26.iso
+# sudo umount /media/VBoxGuestAdditions
+# sudo rmdir /media/VBoxGuestAdditions
+
+# date > /etc/vagrant_provisioned_at
+# echo "************Ending Inline script***************"
+# SCRIPT
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+# Iterate through server entries in YAML file
+yaml_cfg["servers"].each do |server|
+  
+  if server.has_key?("is_primary")
+    is_server_primary = server["is_primary"]
+  else
+    is_server_primary = false
+  end
+
+  config.vm.define server["name"], primary: is_server_primary do |server_config|
+    server_config.vm.provision "docker"
+    server_config.vm.box = server["box"]
+    server_config.vm.box_check_update = yaml_cfg["default_config"]["check_newer_vagrant_box"]
+    
+    if server.has_key?("ip")
+      server_config.vm.network "private_network", ip: server["ip"]
+    end
+
+    if server.has_key?("forwarded_ports")
+      
+      server["forwarded_ports"].each do |port|
+        
+        if port.has_key?("autocorrect")
+          autocorrect = true
+        else
+          autocorrect = DEFAULT_AUTOCORRECT
+        end
+        
+        server_config.vm.network "forwarded_port", guest: port["guest"], host: port["host"], guest_ip: port["guest_ip"], autocorrect: autocorrect
+      end
+    
+    end
+
+    server_config.vm.hostname = server["name"]
+    
+    if yaml_cfg["default_config"]["run_os_update"]
+      server_config.vm.provision "shell", privileged: false, inline: UPDATE_OS_CMD
+    end
+
+
+    server_config.vm.provider :virtualbox do |vb|
+      vb.name = server["name"]
+      vb.memory = server["ram"]
+      vb.cpus = server["cpus"]
+      if server.has_key?("install_vbox_guest_additions")
+        server_config.vm.provision "shell", privileged: false, inline: server["install_vbox_guest_additions"]["cmd"], env: server["install_vbox_guest_additions"]["env"]
+        server_config.vm.provision :reload
+      end
+    end
+        
+    if server.has_key?("shared_folders")
+      
+      server["shared_folders"].each do |shared_folder|
+        server_config.vm.synced_folder shared_folder["host"], shared_folder["guest"], mount_options: ["dmode=777,fmode=777"] ,create: true
+      end
+    
+    end
+
+    if server["shell"] && server["shell"]["cmd"]
+      server["shell"]["cmd"].each do |cmd|
+        server_config.vm.provision "shell", privileged: false, inline: cmd, env: server["shell"]["env"]
+      end
+    end
+    
+    server_config.vm.provision :salt do |salt|
+      salt.minion_config = "salt/minion"
+      salt.run_highstate = true
+    end
+
+      server_config.vm.post_up_message = server["post_up_message"]
+    
+    end
+  
+  end
+
+end

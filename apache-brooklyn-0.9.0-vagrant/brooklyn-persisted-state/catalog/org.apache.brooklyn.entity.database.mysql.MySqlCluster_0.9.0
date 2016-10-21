@@ -1,0 +1,37 @@
+<catalogItem>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.catalog.internal.CatalogEntityItemDto</type>
+  <id>org.apache.brooklyn.entity.database.mysql.MySqlCluster:0.9.0</id>
+  <displayName>MySql Master-Slave cluster</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.database.mysql.MySqlCluster:0.9.0</catalogItemId>
+  <tags>
+    <org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+      <list>
+        <string>org.apache.brooklyn.entity.group.DynamicCluster</string>
+        <string>org.apache.brooklyn.entity.group.AbstractGroup</string>
+        <string>org.apache.brooklyn.api.entity.Entity</string>
+        <string>org.apache.brooklyn.api.objs.BrooklynObject</string>
+        <string>org.apache.brooklyn.api.objs.Identifiable</string>
+        <string>org.apache.brooklyn.api.objs.Configurable</string>
+        <string>org.apache.brooklyn.api.entity.Group</string>
+        <string>org.apache.brooklyn.core.entity.trait.Changeable</string>
+        <string>org.apache.brooklyn.entity.group.Cluster</string>
+        <string>org.apache.brooklyn.core.entity.trait.Startable</string>
+        <string>org.apache.brooklyn.core.entity.trait.Resizable</string>
+        <string>org.apache.brooklyn.core.entity.trait.MemberReplaceable</string>
+        <string>org.apache.brooklyn.entity.database.DatastoreMixins$HasDatastoreUrl</string>
+      </list>
+    </org.apache.brooklyn.core.mgmt.BrooklynTags_-TraitsTag>
+  </tags>
+  <description>Sets up a cluster of MySQL nodes using master-slave relation and binary logging</description>
+  <registeredTypeName>org.apache.brooklyn.entity.database.mysql.MySqlCluster</registeredTypeName>
+  <iconUrl>classpath:///mysql-logo-110x57.png</iconUrl>
+  <version>0.9.0</version>
+  <planYaml>services: [{ type: org.apache.brooklyn.entity.database.mysql.MySqlCluster }]</planYaml>
+  <libraries class="ImmutableList"/>
+  <catalogItemType>ENTITY</catalogItemType>
+  <catalogItemJavaType>org.apache.brooklyn.api.entity.Entity</catalogItemJavaType>
+  <specType>org.apache.brooklyn.api.entity.EntitySpec</specType>
+  <deprecated>false</deprecated>
+  <disabled>false</disabled>
+</catalogItem>

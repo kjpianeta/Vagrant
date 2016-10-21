@@ -1,0 +1,44 @@
+<location>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.location.ssh.SshMachineLocation</type>
+  <id>CSFJx3LT</id>
+  <displayName>SshMachineLocation:CSFJ</displayName>
+  <parent>VNp3eHmL</parent>
+  <locationConfig>
+    <address>
+      <java.net.Inet4Address>10.10.10.101/10.10.10.101</java.net.Inet4Address>
+    </address>
+    <user>vagrant</user>
+    <brooklyn.internal.location.createUnmanaged type="boolean">false</brooklyn.internal.location.createUnmanaged>
+    <inboundPorts>
+      <MutableSet>
+        <int>22</int>
+        <int>31880</int>
+        <int>31001</int>
+        <int>8080</int>
+        <int>8443</int>
+        <int>1099</int>
+      </MutableSet>
+    </inboundPorts>
+    <callerContext>
+      <entityProxy>venlfOlj</entityProxy>
+    </callerContext>
+    <usedPorts>
+      <set>
+        <int>8080</int>
+        <int>8443</int>
+        <int>31880</int>
+        <int>31001</int>
+        <int>1099</int>
+      </set>
+    </usedPorts>
+    <tags>
+      <set/>
+    </tags>
+  </locationConfig>
+  <locationConfigUnused>
+    <string>brooklyn.internal.location.createUnmanaged</string>
+    <string>inboundPorts</string>
+    <string>callerContext</string>
+  </locationConfigUnused>
+</location>

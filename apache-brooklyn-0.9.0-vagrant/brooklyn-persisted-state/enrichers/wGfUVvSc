@@ -1,0 +1,39 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.policy.enricher.TimeFractionDeltaEnricher</type>
+  <id>wGfUVvSc</id>
+  <displayName>org.apache.brooklyn.policy.enricher.TimeFractionDeltaEnricher</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.webapp.tomcat.TomcatServer:0.9.0</catalogItemId>
+  <tags>
+    <string>TimeFractionDeltaEnricher:webapp.reqs.processingTime.total*1ms-&gt;webapp.reqs.processingTime.fraction.last</string>
+  </tags>
+  <uniqueTag>TimeFractionDeltaEnricher:webapp.reqs.processingTime.total*1ms-&gt;webapp.reqs.processingTime.fraction.last</uniqueTag>
+  <config>
+    <nanosPerOrigUnit type="long">1000000</nanosPerOrigUnit>
+    <producer>
+      <entityProxy>HvBvyqA3</entityProxy>
+    </producer>
+    <source>
+      <attributeSensor>
+        <type>java.lang.Integer</type>
+        <name>webapp.reqs.processingTime.total</name>
+        <description>Total processing time, reported by webserver (millis)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </source>
+    <target>
+      <attributeSensor>
+        <type>java.lang.Double</type>
+        <name>webapp.reqs.processingTime.fraction.last</name>
+        <description>Fraction of time spent processing, reported by webserver (percentage, last datapoint)</description>
+        <persistence>REQUIRED</persistence>
+      </attributeSensor>
+    </target>
+    <uniqueTag>TimeFractionDeltaEnricher:webapp.reqs.processingTime.total*1ms-&gt;webapp.reqs.processingTime.fraction.last</uniqueTag>
+    <tags>
+      <set>
+        <string>TimeFractionDeltaEnricher:webapp.reqs.processingTime.total*1ms-&gt;webapp.reqs.processingTime.fraction.last</string>
+      </set>
+    </tags>
+  </config>
+</enricher>

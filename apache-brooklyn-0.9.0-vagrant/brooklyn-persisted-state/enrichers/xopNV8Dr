@@ -1,0 +1,19 @@
+<enricher>
+  <brooklynVersion>0.9.0</brooklynVersion>
+  <type>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic$ComputeServiceState</type>
+  <id>xopNV8Dr</id>
+  <displayName>org.apache.brooklyn.core.entity.lifecycle.ServiceStateLogic.ComputeServiceState</displayName>
+  <catalogItemId>org.apache.brooklyn.entity.proxy.nginx.NginxController:0.9.0</catalogItemId>
+  <tags>
+    <string>service.state.actual</string>
+  </tags>
+  <uniqueTag>service.state.actual</uniqueTag>
+  <config>
+    <uniqueTag>service.state.actual</uniqueTag>
+    <tags>
+      <set>
+        <string>service.state.actual</string>
+      </set>
+    </tags>
+  </config>
+</enricher>
